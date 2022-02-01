@@ -4,12 +4,12 @@ import Gui.Panels.signUpPanel;
 
 import javax.swing.*;
 
-public class signUpFrame extends JFrame {
+public class signUpAndLoginFrame extends JFrame {
 
-    public signUpFrame() {
+    public signUpAndLoginFrame() {
 
         this.setTitle("Sign Up :: MyBitcoinWallet ");
-        this.setSize(400, 250);
+        this.setSize(400, 290);
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setResizable(false);
         this.setLayout(null);

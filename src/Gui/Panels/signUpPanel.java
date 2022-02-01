@@ -6,8 +6,10 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 
-public class signUpPanel extends JPanel implements ActionListener {
+public class signUpPanel extends JPanel implements ActionListener, MouseListener {
 
     JPanel errorPanel;
     JLabel errorLabel;
@@ -15,13 +17,14 @@ public class signUpPanel extends JPanel implements ActionListener {
     JTextField passwordInput;
     JTextField passwordConfirmationInput;
     JButton signUpButton;
+    JLabel haveAnAccountLabel;
 
     mongoDatabase database = new mongoDatabase();
 
     public signUpPanel() {
 
         this.setLayout(null);
-        this.setBounds(0,0,400,250);
+        this.setBounds(0,0,400,290);
 
         /*
             JLabels
@@ -30,6 +33,12 @@ public class signUpPanel extends JPanel implements ActionListener {
         errorLabel = new JLabel();
         errorLabel.setFont(new Font("ARIAL", Font.PLAIN, 16));
         errorLabel.setVisible(false);
+
+        haveAnAccountLabel = new JLabel();
+        haveAnAccountLabel.setText("Already have an account?");
+        haveAnAccountLabel.setFont(new Font("ARIAL", Font.PLAIN, 16));
+        haveAnAccountLabel.setBounds(112, 130, 180, 20);
+        haveAnAccountLabel.addMouseListener(this);
 
         /*
             PANEL
@@ -66,10 +75,11 @@ public class signUpPanel extends JPanel implements ActionListener {
         */
 
         signUpButton = new JButton("Sign Up");
-        signUpButton.setBounds(145, 180, 100, 25);
+        signUpButton.setBounds(145, 215, 100, 25);
         signUpButton.setFont(new Font("ARIAL", Font.PLAIN, 15));
         signUpButton.setFocusable(false);
         signUpButton.addActionListener(this);
+        signUpButton.addMouseListener(this);
 
         /*
             ADDING
@@ -81,6 +91,7 @@ public class signUpPanel extends JPanel implements ActionListener {
         this.add(passwordInput);
         this.add(passwordConfirmationInput);
         this.add(signUpButton);
+        this.add(haveAnAccountLabel);
 
     }
 
@@ -89,6 +100,7 @@ public class signUpPanel extends JPanel implements ActionListener {
         emailInput.setBounds(20,70,350,25);
         passwordInput.setBounds(20,105,350,25);
         passwordConfirmationInput.setBounds(20,140,350,25);
+        haveAnAccountLabel.setBounds(112, 177, 180,20);
 
         errorPanel.setVisible(true);
         errorLabel.setText(message);
@@ -124,6 +136,44 @@ public class signUpPanel extends JPanel implements ActionListener {
 
             }
 
+        }
+
+    }
+
+    @Override
+    public void mouseClicked(MouseEvent e) {
+
+    }
+
+    @Override
+    public void mousePressed(MouseEvent e) {
+
+    }
+
+    @Override
+    public void mouseReleased(MouseEvent e) {
+
+    }
+
+    @Override
+    public void mouseEntered(MouseEvent e) {
+
+        if(e.getSource() == haveAnAccountLabel) {
+            haveAnAccountLabel.setForeground(new Color(122, 208, 235));
+            haveAnAccountLabel.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+        }
+
+        if(e.getSource() == signUpButton) {
+            signUpButton.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+        }
+
+    }
+
+    @Override
+    public void mouseExited(MouseEvent e) {
+
+        if(e.getSource() == haveAnAccountLabel) {
+            haveAnAccountLabel.setForeground(Color.black);
         }
 
     }
