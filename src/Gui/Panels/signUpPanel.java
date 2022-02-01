@@ -129,10 +129,18 @@ public class signUpPanel extends JPanel implements ActionListener, MouseListener
 
                 String userEmail = emailInput.getText();
                 String userPassword = passwordInput.getText();
+                String loweredStringUserEmail = userEmail.toLowerCase();
 
-                database.insertNewUser(userEmail, userPassword);
+                if(database.findUser(loweredStringUserEmail) == true) {
 
-                System.out.println(userEmail + " has signed up!");
+                    sendError("Email is already taken!");
+
+                } else {
+
+                    database.insertNewUser(loweredStringUserEmail, userPassword);
+                    System.out.println(loweredStringUserEmail + " has signed up!");
+
+                }
 
             }
 

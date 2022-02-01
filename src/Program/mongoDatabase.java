@@ -1,6 +1,13 @@
 package Program;
 
 import com.mongodb.*;
+import com.mongodb.client.MongoCollection;
+import org.bson.Document;
+
+import javax.print.Doc;
+
+import static com.mongodb.client.model.Filters.*;
+import static com.mongodb.client.model.Filters.eq;
 
 public class mongoDatabase {
 
@@ -35,6 +42,36 @@ public class mongoDatabase {
         } catch(Exception e) {
             System.out.println(e);
         }
+
+    }
+
+    public static boolean findUser(String email) {
+
+        boolean userFound = false;
+
+        try {
+
+            DBCollection users = _database.getCollection("users");
+
+            BasicDBObject searchUser = new BasicDBObject();
+            searchUser.put("user_email", email);
+            DBCursor cursor = users.find(searchUser);
+
+            if(cursor.hasNext()) {
+
+                userFound = true;
+
+            } else if(!cursor.hasNext()) {
+
+                userFound = false;
+
+            }
+
+        } catch (Exception e) {
+            userFound = false;
+        }
+
+        return userFound;
 
     }
 
