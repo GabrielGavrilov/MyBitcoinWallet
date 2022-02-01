@@ -101,11 +101,15 @@ public class signUpPanel extends JPanel implements ActionListener {
 
         if(e.getSource() == signUpButton) {
 
-            if(!emailInput.getText().contains("@") || emailInput.getText().contains(" ") || !emailInput.getText().contains(".")) {
+            String emailInputText = emailInput.getText();
+            String passwordInputText = passwordInput.getText();
+            String passwordConfirmationInputText = passwordConfirmationInput.getText();
+
+            if(!emailInputText.contains("@") || emailInputText.contains(" ") || !emailInputText.contains(".")) {
 
                 sendError("Email must be valid!");
 
-            } else if(passwordInput.getText() != passwordConfirmationInput.getText()) {
+            } else if(!passwordInputText.equals(passwordConfirmationInputText)) {
 
                 sendError("Passwords must match!");
 
