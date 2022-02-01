@@ -1,5 +1,6 @@
 package Gui.Frames;
 
+import Gui.Panels.loginPanel;
 import Gui.Panels.signUpPanel;
 
 import javax.swing.*;
@@ -19,6 +20,7 @@ public class signUpAndLoginFrame extends JFrame {
         */
 
         signUpPanel pSignUp = new signUpPanel();
+        loginPanel pLogin = new loginPanel();
 
         /*
             ADDING
@@ -26,6 +28,8 @@ public class signUpAndLoginFrame extends JFrame {
 
         this.setVisible(true);
         this.add(pSignUp);
+        pLogin.setVisible(false);
+        this.add(pLogin);
 
     }
 

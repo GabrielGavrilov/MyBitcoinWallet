@@ -20,6 +20,7 @@ public class signUpPanel extends JPanel implements ActionListener, MouseListener
     JLabel haveAnAccountLabel;
 
     mongoDatabase database = new mongoDatabase();
+    loginPanel pLogin = new loginPanel();
 
     public signUpPanel() {
 
@@ -125,6 +126,10 @@ public class signUpPanel extends JPanel implements ActionListener, MouseListener
 
                 sendError("Passwords must match!");
 
+            } else if(passwordInputText.length() <= 5) {
+
+                sendError("Password must be longer!");
+
             } else {
 
                 String userEmail = emailInput.getText();
@@ -150,6 +155,13 @@ public class signUpPanel extends JPanel implements ActionListener, MouseListener
 
     @Override
     public void mouseClicked(MouseEvent e) {
+
+        if(e.getSource() == haveAnAccountLabel) {
+
+            this.setVisible(false);
+            pLogin.setVisible(true);
+
+        }
 
     }
 
