@@ -14,6 +14,7 @@ public class loginPanel extends JPanel implements ActionListener {
 
         this.setLayout(null);
         this.setBounds(0,0,400,290);
+        this.setBackground(Color.pink);
 
         /*
             TEXT FIELDS

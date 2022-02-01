@@ -20,7 +20,6 @@ public class signUpPanel extends JPanel implements ActionListener, MouseListener
     JLabel haveAnAccountLabel;
 
     mongoDatabase database = new mongoDatabase();
-    loginPanel pLogin = new loginPanel();
 
     public signUpPanel() {
 
@@ -159,7 +158,6 @@ public class signUpPanel extends JPanel implements ActionListener, MouseListener
         if(e.getSource() == haveAnAccountLabel) {
 
             this.setVisible(false);
-            pLogin.setVisible(true);
 
         }
 

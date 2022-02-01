@@ -7,7 +7,7 @@ import javax.swing.*;
 
 public class signUpAndLoginFrame extends JFrame {
 
-    public signUpAndLoginFrame() {
+    public signUpAndLoginFrame() throws InterruptedException {
 
         this.setTitle("Sign Up :: MyBitcoinWallet ");
         this.setSize(400, 290);
@@ -30,6 +30,21 @@ public class signUpAndLoginFrame extends JFrame {
         this.add(pSignUp);
         pLogin.setVisible(false);
         this.add(pLogin);
+
+        /*
+            PANEL MANAGER
+        */
+
+        while(true) {
+
+            Thread.sleep(500);
+
+            if(pSignUp.isVisible() == false) {
+                this.setTitle("Login :: MyBitcoinWallet");
+                pLogin.setVisible(true);
+            }
+
+        }
 
     }
 
