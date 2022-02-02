@@ -40,8 +40,18 @@ public class signUpAndLoginFrame extends JFrame {
             Thread.sleep(500);
 
             if(pSignUp.isVisible() == false) {
+
                 this.setTitle("Login :: MyBitcoinWallet");
                 pLogin.setVisible(true);
+
+            }
+
+            if(pLogin.isVisible() == false && pSignUp.isVisible() == false) {
+
+                pSignUp.setVisible(true);
+                this.setTitle("Sign Up :: MyBitcoinWallet");
+                break;
+
             }
 
         }
