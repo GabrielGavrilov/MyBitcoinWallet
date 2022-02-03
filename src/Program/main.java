@@ -1,12 +1,12 @@
 package Program;
 
-import Gui.Frames.signUpAndLoginFrame;
+import Gui.Frames.introductionFrame;
 
 public class main {
     public static void main(String[] args) throws InterruptedException {
 
         System.out.println("Starting app.");
-        signUpAndLoginFrame mainFrame = new signUpAndLoginFrame();
+        introductionFrame mainFrame = new introductionFrame();
 
     }
 

@@ -11,12 +11,18 @@ import static com.mongodb.client.model.Filters.eq;
 
 public class mongoDatabase {
 
+    /*
+        PRIVATE VARIABLES
+    */
+
     private static MongoClientURI _connectionURI = new MongoClientURI("mongodb+srv://gabby:winter22@personaldatabase.wqq3m.mongodb.net/MyBitcoinWallet?retryWrites=true&w=majority");
     private static MongoClient _mongoClient = new MongoClient(_connectionURI);
     private static DB _database = _mongoClient.getDB("MyBitcoinWallet");
 
     static bitcoinAPI btc = new bitcoinAPI();
 
+    // @METHOD: Insert new user.
+    // @DESCRIPTION: Inserts new user to the database.
     public static void insertNewUser(String email, String password) {
 
         try {
@@ -45,6 +51,8 @@ public class mongoDatabase {
 
     }
 
+    // @METHOD: Find user.
+    // @DESCRIPTION: Searches for the user with the parameter, if user is found, the method will return a true.
     public static boolean findUser(String email) {
 
         boolean userFound = false;

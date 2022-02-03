@@ -7,9 +7,15 @@ import com.microsoft.playwright.Playwright;
 
 public class bitcoinAPI {
 
+    /*
+        PUBLIC VARIABLES
+    */
+
     public static String _publicBitcoinWallet;
     public static String _privatePrivateWalletKey;
 
+    // @METHOD: Bitcoin wallet generator.
+    // @DESCRIPTION: Goes to "https://walletgenerator.net", generates a new wallet, and scrapes the data.
     public static boolean generateNewWallet() {
 
         try(Playwright playwright = Playwright.create()) {
