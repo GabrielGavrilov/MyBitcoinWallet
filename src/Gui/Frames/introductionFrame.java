@@ -1,6 +1,7 @@
 package Gui.Frames;
 
 import Gui.Panels.signupPanel;
+import Program.mongoDatabase;
 
 import javax.swing.*;
 import java.awt.*;
@@ -18,6 +19,7 @@ public class introductionFrame extends JFrame implements ActionListener, MouseLi
     static JLabel errorMessage;
 
     static signupPanel pSignup = new signupPanel();
+    static mongoDatabase database = new mongoDatabase();
 
     public introductionFrame() throws InterruptedException  {
 
@@ -76,6 +78,8 @@ public class introductionFrame extends JFrame implements ActionListener, MouseLi
 
     }
 
+    // @METHOD: Error message error
+    // @DESCRIPTION: Expands the JFrame, and sends an error message (message set to the parameter)
     void sendError(String errMessage) {
 
         this.setSize(400, 325);
@@ -97,9 +101,54 @@ public class introductionFrame extends JFrame implements ActionListener, MouseLi
         if(e.getSource() == signupBtn) {
 
             String signupEmail = pSignup.userEmailInput.getText();
+            String signupPassword = pSignup.userPasswordInput.getText();
+            String signupPasswordConfirmation = pSignup.userPasswordConfirmation.getText();
 
-            if(!signupEmail.contains("@")) {
-                sendError("Must have a valid email!");
+            try {
+
+                boolean userFound = database.findUser(signupEmail);
+
+                if(userFound == true) {
+
+                    if(!signupEmail.contains("@")) {
+                        sendError("Must have a valid email!");
+                        return;
+                    }
+
+                    if(!signupEmail.contains(".")) {
+                        sendError("Must have a valid email!");
+                        return;
+                    }
+
+                    if(signupEmail.contains(" ")) {
+                        sendError("Must have a valid email!");
+                        return;
+                    }
+
+                    if(!signupPassword.equals(signupPasswordConfirmation)) {
+                        sendError("Passwords must match!");
+                        return;
+                    }
+
+                    if(signupPassword.length() <= 5) {
+                        sendError("Password must be 6 characters or longer!");
+                        return;
+                    }
+
+                    database.insertNewUser(signupEmail, pSignup.userPasswordInput.getText());
+                    System.out.println(signupEmail + " has signed up!");
+
+                } else if(userFound == true) {
+
+                    sendError("Email is already taken.");
+                    return;
+
+                }
+
+            } catch(Exception err) {
+
+                System.out.println(err);
+
             }
 
         }
