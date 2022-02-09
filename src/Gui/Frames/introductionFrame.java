@@ -52,7 +52,7 @@ public class introductionFrame extends JFrame implements ActionListener, MouseLi
 
         errorPanel = new JPanel();
         errorPanel.setBackground(new Color(255, 99, 71));
-        errorPanel.setBounds(10,10,370,65);
+        errorPanel.setBounds(10,10,373,65);
         errorPanel.setLayout(new GridBagLayout());
 
         /*
@@ -79,7 +79,7 @@ public class introductionFrame extends JFrame implements ActionListener, MouseLi
     }
 
     // @METHOD: Error message error
-    // @DESCRIPTION: Expands the JFrame, and sends an error message (message set to the parameter)
+    // @DESCRIPTION: Expands the JFrame, and sends an error message. (message is set to the parameter)
     void sendError(String errMessage) {
 
         this.setSize(400, 325);
@@ -108,7 +108,7 @@ public class introductionFrame extends JFrame implements ActionListener, MouseLi
 
                 boolean userFound = database.findUser(signupEmail);
 
-                if(userFound == true) {
+                if(userFound == false) {
 
                     if(!signupEmail.contains("@")) {
                         sendError("Must have a valid email!");
