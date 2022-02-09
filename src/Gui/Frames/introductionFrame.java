@@ -46,7 +46,7 @@ public class introductionFrame extends JFrame implements ActionListener, MouseLi
             BUTTONS
         */
 
-        signupBtn.setBounds(105,175, 175, 25);
+        signupBtn.setBounds(105,175, 180, 25);
         signupBtn.setFont(new Font("ARIAL", Font.PLAIN, 15));
         signupBtn.setFocusable(false);
         signupBtn.addMouseListener(this);
