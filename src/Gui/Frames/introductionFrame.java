@@ -98,6 +98,8 @@ public class introductionFrame extends JFrame implements ActionListener, MouseLi
     @Override
     public void actionPerformed(ActionEvent e) {
 
+        // @METHOD: Sign up method
+        // @DESCRIPTION: Checks if email is already taken, if not, saves new user onto the database.
         if(e.getSource() == signupBtn) {
 
             String signupEmail = pSignup.userEmailInput.getText();
@@ -135,7 +137,7 @@ public class introductionFrame extends JFrame implements ActionListener, MouseLi
                         return;
                     }
 
-                    database.insertNewUser(signupEmail, pSignup.userPasswordInput.getText());
+                    database.insertNewUser(signupEmail, signupPassword);
                     System.out.println(signupEmail + " has signed up!");
 
                 } else if(userFound == true) {
@@ -160,6 +162,7 @@ public class introductionFrame extends JFrame implements ActionListener, MouseLi
 
         if(e.getSource() == alreadyHaveAnAccount) {
 
+            
 
         }
 
@@ -180,6 +183,7 @@ public class introductionFrame extends JFrame implements ActionListener, MouseLi
 
         if(e.getSource() == alreadyHaveAnAccount) {
             alreadyHaveAnAccount.setCursor(new Cursor(Cursor.HAND_CURSOR));
+            alreadyHaveAnAccount.setForeground(new Color(0,0,238));
         }
 
         if(e.getSource() == signupBtn) {
@@ -190,6 +194,10 @@ public class introductionFrame extends JFrame implements ActionListener, MouseLi
 
     @Override
     public void mouseExited(MouseEvent e) {
+
+        if(e.getSource() == alreadyHaveAnAccount) {
+            alreadyHaveAnAccount.setForeground(Color.black);
+        }
 
     }
 }
