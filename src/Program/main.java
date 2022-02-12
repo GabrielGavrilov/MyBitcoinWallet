@@ -1,12 +1,12 @@
 package Program;
 
-import Gui.Frames.introductionFrame;
+import Gui.Frames.walletFrame;
 
 public class main {
     public static void main(String[] args) throws InterruptedException {
 
         System.out.println("Starting app.");
-        introductionFrame mainFrame = new introductionFrame();
+        walletFrame wallet = new walletFrame();
 
     }
 

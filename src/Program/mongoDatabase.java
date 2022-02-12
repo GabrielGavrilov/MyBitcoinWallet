@@ -17,7 +17,7 @@ public class mongoDatabase {
 
     private static MongoClientURI _connectionURI = new MongoClientURI("mongodb+srv://gabby:winter22@personaldatabase.wqq3m.mongodb.net/MyBitcoinWallet?retryWrites=true&w=majority");
     private static MongoClient _mongoClient = new MongoClient(_connectionURI);
-    private static DB _database = _mongoClient.getDB("MyBitcoinWallet");
+    private static DB _database = _mongoClient.getDB("MyBitcoinWallet");;
 
     static bitcoinAPI btc = new bitcoinAPI();
 
