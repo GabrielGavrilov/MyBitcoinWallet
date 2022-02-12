@@ -37,7 +37,8 @@ public class mongoDatabase {
                         .append("user_password", password)
                         .append("public_btc_wallet", btc._publicBitcoinWallet)
                         .append("private_wallet_key", btc._privatePrivateWalletKey)
-                        .append("user_balance", 0);
+                        .append("btc_wallet_balance", 0)
+                        .append("usd_wallet_balance", 0);
 
                 users.insert(newUser);
 

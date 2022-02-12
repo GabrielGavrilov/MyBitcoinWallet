@@ -13,6 +13,8 @@ public class bitcoinAPI {
 
     public static String _publicBitcoinWallet;
     public static String _privatePrivateWalletKey;
+    public static String _btcWalletBalance;
+    public static String _usdWalletBalance;
 
     // @METHOD: Bitcoin wallet generator.
     // @DESCRIPTION: Goes to "https://walletgenerator.net", generates a new wallet, and scrapes the data.
