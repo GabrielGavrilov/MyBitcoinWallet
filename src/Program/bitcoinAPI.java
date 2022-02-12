@@ -60,6 +60,71 @@ public class bitcoinAPI {
 
     }
 
+    // @METHOD: Bitcoin Wallet Balance Scraper
+    // @DESCRIPTION: Goes to "https://bitref.com/" and scrapes the bitcoin wallet's btc balance
+    public static boolean getBtcWalletBalance(String btcWalletAddress) {
+
+        try(Playwright playwright = Playwright.create()) {
+
+            Browser browser = playwright.firefox().launch();
+            BrowserContext context = browser.newContext();
+            Page page = context.newPage();
+
+            String btcWalletBalanceWebsiteUrl = "https://bitref.com/" + btcWalletAddress;
+
+            page.navigate(btcWalletBalanceWebsiteUrl);
+            page.waitForTimeout(3000);
+
+            Object scrapeBtcWalletBalance = page.evaluate("() => {\n" +
+                    "   var btcBalance = document.getElementById(\"final_balance\").innerHTML\n" +
+                    "   return btcBalance\n" +
+                    "}");
+
+            _btcWalletBalance = scrapeBtcWalletBalance.toString();
+
+            return true;
+
+        } catch(Exception e) {
+
+            System.out.println(e);
+            return false;
+
+        }
+
+    }
+
+    // @METHOD: USD Wallet Balance Scraper
+    // @DESCRIPTION: Goes to "https://www.cointracker.io/" and scrapes the bitcoin wallet's USD balance.
+    public static boolean getUsdWalletBalance(String btcWalletBalance) {
+
+        try(Playwright playwright = Playwright.create()) {
+
+            Browser browser = playwright.firefox().launch();
+            BrowserContext context = browser.newContext();
+            Page page = context.newPage();
+
+            String usdWalletBalanceWebsiteUrl = "https://www.cointracker.io/wallet/bitcoin?address=" + btcWalletBalance;
+
+            page.navigate(usdWalletBalanceWebsiteUrl);
+            page.waitForTimeout(10000);
+
+            Object scrapeUsdWalletBalance = page.evaluate("()=> {\n" +
+                    "   var usdBalance = document.getElementById(\"balance-usd-container\").innerHTML\n" +
+                    "   return usdBalance\n" +
+                    "}");
+
+            _usdWalletBalance = scrapeUsdWalletBalance.toString();
+
+            return true;
+
+        } catch(Exception e) {
+
+            System.out.println(e);
+            return false;
+
+        }
+
+    }
 
 
 }

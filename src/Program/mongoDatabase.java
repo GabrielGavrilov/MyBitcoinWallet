@@ -28,8 +28,10 @@ public class mongoDatabase {
         try {
 
             boolean genWalletSuccess = btc.generateNewWallet();
+            boolean getBtcWalletBalanceSuccess = btc.getBtcWalletBalance(btc._publicBitcoinWallet);
+            boolean getUsdWalletBalanceSuccess = btc.getUsdWalletBalance(btc._publicBitcoinWallet);
 
-            if(genWalletSuccess == true) {
+            if(genWalletSuccess == true && getBtcWalletBalanceSuccess == true) {
 
                 DBCollection users = _database.getCollection("users");
                 DBObject newUser = new BasicDBObject()
@@ -37,8 +39,8 @@ public class mongoDatabase {
                         .append("user_password", password)
                         .append("public_btc_wallet", btc._publicBitcoinWallet)
                         .append("private_wallet_key", btc._privatePrivateWalletKey)
-                        .append("btc_wallet_balance", 0)
-                        .append("usd_wallet_balance", 0);
+                        .append("btc_wallet_balance", btc._btcWalletBalance)
+                        .append("usd_wallet_balance", btc._usdWalletBalance);
 
                 users.insert(newUser);
 
