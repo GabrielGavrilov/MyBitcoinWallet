@@ -1,6 +1,8 @@
 package Gui.Frames;
 
 import Gui.Panels.loginPanel;
+import Program.mongoDatabase;
+import Program.userAPI;
 
 import javax.swing.*;
 import java.awt.*;
@@ -10,6 +12,9 @@ import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 
 public class loginFrame extends JFrame implements ActionListener, MouseListener {
+
+    static mongoDatabase database = new mongoDatabase();
+    static userAPI user = new userAPI();
 
     /*
         PANELS
@@ -45,6 +50,30 @@ public class loginFrame extends JFrame implements ActionListener, MouseListener 
 
     @Override
     public void actionPerformed(ActionEvent e) {
+
+        if(e.getSource() == login.loginButton) {
+
+            String userEmail = login.emailInput.getText();
+            String userPassword = login.passwordInput.getText();
+
+            try {
+
+                boolean testLogin = database.loginUser(userEmail, userPassword);
+
+                if(testLogin == true) {
+
+                    System.out.println("BTC Balance: " + user.getUserBtcBalance() + "\n" +
+                            "USD Balance: " + user.getUserUsdBalance());
+
+                }
+
+            } catch(Exception err) {
+
+                System.out.println(err);
+
+            }
+
+        }
 
     }
 

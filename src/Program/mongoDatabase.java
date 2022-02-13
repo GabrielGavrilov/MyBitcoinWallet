@@ -6,6 +6,8 @@ import org.bson.Document;
 
 import javax.print.Doc;
 
+import java.awt.Cursor;
+
 import static com.mongodb.client.model.Filters.*;
 import static com.mongodb.client.model.Filters.eq;
 
@@ -20,6 +22,7 @@ public class mongoDatabase {
     private static DB _database = _mongoClient.getDB("MyBitcoinWallet");;
 
     static bitcoinAPI btc = new bitcoinAPI();
+    static userAPI userAPI = new userAPI();
 
     // @METHOD: Insert new user.
     // @DESCRIPTION: Inserts new user to the database.
@@ -51,6 +54,63 @@ public class mongoDatabase {
         } catch(Exception e) {
             System.out.println(e);
         }
+
+    }
+
+    public static boolean loginUser(String email, String password) {
+
+        boolean loginUser = false;
+
+        String userBtcBalance;
+        String userUsdBalance;
+        String userPublicWallet;
+
+        try {
+
+            DBCollection users = _database.getCollection("users");
+
+            BasicDBObject searchUser = new BasicDBObject();
+            searchUser.put("user_email", email);
+            searchUser.put("user_password", password);
+            DBCursor cursor = users.find(searchUser);
+
+            if(cursor.hasNext()) {
+
+                String cursorToString = cursor.next().toString();
+                String[] cursorSplitted = cursorToString.split(", ");
+
+                String userBtcBalanceBeforeSplit = cursorSplitted[5];
+                String[] userBtcBalanceSplitted = userBtcBalanceBeforeSplit.split(" ");
+                userBtcBalance = userBtcBalanceSplitted[1].substring(1, userBtcBalanceSplitted[1].length() - 1);
+
+                String userUsdBalanceBeforeSplit = cursorSplitted[6];
+                String[] userUsdBalanceSplitted = userUsdBalanceBeforeSplit.split(" ");
+                userUsdBalance = userUsdBalanceSplitted[1].substring(1, userUsdBalanceSplitted[1].length() - 1);
+
+                String publicBitcoinAddressBeforeSplit = cursorSplitted[3];
+                String[] publicBitcoinAddressSplitted = publicBitcoinAddressBeforeSplit.split(" ");
+                userPublicWallet = publicBitcoinAddressSplitted[1].substring(1, publicBitcoinAddressSplitted[1].length() - 1);
+
+                userAPI.setUserBtcBalance(userBtcBalance);
+                userAPI.setUserUsdBalance(userUsdBalance);
+                userAPI.setUserPublicWallet(userPublicWallet);
+
+                loginUser = true;
+
+            } else if(!cursor.hasNext()) {
+
+                loginUser = false;
+
+            }
+
+        } catch(Exception e) {
+
+            System.out.println(e);
+            loginUser = false;
+
+        }
+
+        return loginUser;
 
     }
 
