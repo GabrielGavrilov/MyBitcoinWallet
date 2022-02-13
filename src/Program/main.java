@@ -9,6 +9,7 @@ public class main {
         System.out.println("Starting app.");
 
         loginFrame loginPage = new loginFrame();
+        //walletFrame wallet = new walletFrame();
 
     }
 

@@ -13,7 +13,7 @@ public class loginPanel extends JPanel {
     */
 
     public static JTextField emailInput = new JTextField();
-    public static JTextField passwordInput = new JTextField();
+    public static JPasswordField passwordInput = new JPasswordField();
 
     /*
        PUBLIC BUTTONS
