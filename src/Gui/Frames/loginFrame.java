@@ -58,12 +58,16 @@ public class loginFrame extends JFrame implements ActionListener, MouseListener 
 
             try {
 
-                boolean testLogin = database.loginUser(userEmail, userPassword);
+                boolean loginUserSuccess = database.loginUser(userEmail, userPassword);
 
-                if(testLogin == true) {
+                if(loginUserSuccess == true) {
 
-                    System.out.println("BTC Balance: " + user.getUserBtcBalance() + "\n" +
-                            "USD Balance: " + user.getUserUsdBalance());
+                    walletFrame wallet = new walletFrame();
+                    this.setVisible(false);
+
+                } else if(loginUserSuccess == false) {
+
+                    System.out.println("There has been an issue.");
 
                 }
 

@@ -1,9 +1,13 @@
 package Gui.Panels;
 
+import Program.userAPI;
+
 import javax.swing.*;
 import java.awt.*;
 
 public class sideMenuPanel extends JPanel {
+
+    static userAPI user = new userAPI();
 
     /*
         MENU BITCOIN WALLET VARIABLES
@@ -28,12 +32,12 @@ public class sideMenuPanel extends JPanel {
         totalBalanceLabel.setForeground(new Color(126, 133, 143));
         totalBalanceLabel.setBounds(10,20,150,20);
 
-        btcWalletBalance.setText("0.00000000"); // CHANGE THIS LATER
+        btcWalletBalance.setText(user.getUserBtcBalance()); // CHANGE THIS LATER
         btcWalletBalance.setFont(new Font("ARIAL", Font.BOLD, 16));
         btcWalletBalance.setForeground(Color.white);
         btcWalletBalance.setBounds(10,55,150,20);
 
-        usdWalletBalance.setText("$0.00"); // CHANGE THIS LATER
+        usdWalletBalance.setText(user.getUserUsdBalance());
         usdWalletBalance.setFont(new Font("ARIAL", Font.BOLD, 11));
         usdWalletBalance.setForeground(new Color(126, 133, 143));
         usdWalletBalance.setBounds(10, 75, 150, 20);

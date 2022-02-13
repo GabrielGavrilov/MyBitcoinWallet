@@ -6,9 +6,9 @@ public class userAPI {
         PRIVATE VARIABLES
     */
 
-    private static String _userBtcBalance;
-    private static String _userUsdBalance;
-    private static String _userPublicWallet;
+    private static String _userBtcBalance = "0.00000000";
+    private static String _userUsdBalance = "$0.00";
+    private static String _userPublicWallet = "null";
 
     /*
         GETTERS

@@ -85,7 +85,7 @@ public class mongoDatabase {
 
                 String userUsdBalanceBeforeSplit = cursorSplitted[6];
                 String[] userUsdBalanceSplitted = userUsdBalanceBeforeSplit.split(" ");
-                userUsdBalance = userUsdBalanceSplitted[1].substring(1, userUsdBalanceSplitted[1].length() - 1);
+                userUsdBalance = userUsdBalanceSplitted[1].substring(1, userUsdBalanceSplitted[1].length() - 2);
 
                 String publicBitcoinAddressBeforeSplit = cursorSplitted[3];
                 String[] publicBitcoinAddressSplitted = publicBitcoinAddressBeforeSplit.split(" ");
