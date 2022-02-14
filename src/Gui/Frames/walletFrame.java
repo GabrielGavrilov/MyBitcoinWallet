@@ -104,6 +104,57 @@ public class walletFrame extends JFrame implements ActionListener, MouseListener
 
     }
 
+    public void showReceivePanel() {
+
+        this.overviewMenu = false;
+        this.sendMenu = false;
+        this.receiveMenu = true;
+        this.settingsMenu = false;
+
+        sideMenu.menuOverview.setBackground(new Color(9, 12, 20));
+        sideMenu.overviewLabel.setForeground(new Color(126, 133, 143));
+        sideMenu.menuOrangeOverview.setVisible(false);
+
+        sideMenu.menuSend.setBackground(new Color(9, 12, 20));
+        sideMenu.sendLabel.setForeground(new Color(126, 133, 143));
+        sideMenu.menuOrangeSend.setVisible(false);
+
+        sideMenu.menuReceive.setBackground(new Color(19, 22, 31));
+        sideMenu.receiveLabel.setForeground(Color.white);
+        sideMenu.menuOrangeReceive.setVisible(true);
+
+        sideMenu.menuSettings.setBackground(new Color(9, 12, 20));
+        sideMenu.settingsLabel.setForeground(new Color(126, 133, 143));
+        sideMenu.menuOrangeSettings.setVisible(false);
+
+    }
+
+    public void showSettingsPanel() {
+
+        this.overviewMenu = false;
+        this.sendMenu = false;
+        this.receiveMenu = false;
+        this.settingsMenu = true;
+
+        sideMenu.menuOverview.setBackground(new Color(9, 12, 20));
+        sideMenu.overviewLabel.setForeground(new Color(126, 133, 143));
+        sideMenu.menuOrangeOverview.setVisible(false);
+
+        sideMenu.menuSend.setBackground(new Color(9, 12, 20));
+        sideMenu.sendLabel.setForeground(new Color(126, 133, 143));
+        sideMenu.menuOrangeSend.setVisible(false);
+
+        sideMenu.menuReceive.setBackground(new Color(9, 12, 20));
+        sideMenu.receiveLabel.setForeground(new Color(126, 133, 143));
+        sideMenu.menuOrangeReceive.setVisible(false);
+
+        sideMenu.menuSettings.setBackground(new Color(19, 22, 31));
+        sideMenu.settingsLabel.setForeground(Color.white);
+        sideMenu.menuOrangeSettings.setVisible(true);
+
+
+    }
+
     @Override
     public void actionPerformed(ActionEvent e) {
 
@@ -118,6 +169,14 @@ public class walletFrame extends JFrame implements ActionListener, MouseListener
 
         if(e.getSource() == sideMenu.menuSend) {
             showSendPanel();
+        }
+
+        if(e.getSource() == sideMenu.menuReceive) {
+            showReceivePanel();
+        }
+
+        if(e.getSource() == sideMenu.menuSettings) {
+            showSettingsPanel();
         }
 
     }
@@ -190,13 +249,11 @@ public class walletFrame extends JFrame implements ActionListener, MouseListener
 
         if(receiveMenu == true) {
             if(e.getSource() == sideMenu.menuOverview) {
-                sideMenu.menuOverview.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
-                sideMenu.menuOverview.setBackground(new Color(19, 22, 31));
+                sideMenu.menuOverview.setBackground(new Color(9, 12, 20));
             }
 
             if(e.getSource() == sideMenu.menuSend) {
-                sideMenu.menuSend.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
-                sideMenu.menuSend.setBackground(new Color(19, 22, 31));
+                sideMenu.menuSend.setBackground(new Color(9, 12, 20));
             }
 
             if(e.getSource() == sideMenu.menuSettings) {
