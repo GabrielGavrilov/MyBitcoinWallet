@@ -104,6 +104,8 @@ public class walletFrame extends JFrame implements ActionListener, MouseListener
 
     public void showSendPanel() {
 
+        this.setTitle("Send :: MyBitcoinWallet");
+
         this.isOnOverviewMenu = false;
         this.isOnSendMenu = true;
         this.isOnReceiveMenu = false;
@@ -134,6 +136,8 @@ public class walletFrame extends JFrame implements ActionListener, MouseListener
 
     public void showReceivePanel() {
 
+        this.setTitle("Receive :: MyBitcoinWallet");
+
         this.isOnOverviewMenu = false;
         this.isOnSendMenu = false;
         this.isOnReceiveMenu = true;
@@ -163,6 +167,8 @@ public class walletFrame extends JFrame implements ActionListener, MouseListener
     }
 
     public void showSettingsPanel() {
+
+        this.setTitle("Settings :: MyBitcoinWallet");
 
         this.isOnOverviewMenu = false;
         this.isOnSendMenu = false;

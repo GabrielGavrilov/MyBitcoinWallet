@@ -8,7 +8,7 @@ public class userAPI {
 
     private static String _userBtcBalance = "0.00000000";
     private static String _userUsdBalance = "$0.00";
-    private static String _userPublicWallet = "null";
+    private static String _userPublicWallet = "DEVELOPER MODE";
 
     /*
         GETTERS

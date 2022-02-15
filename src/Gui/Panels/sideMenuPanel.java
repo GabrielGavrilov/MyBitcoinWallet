@@ -70,7 +70,7 @@ public class sideMenuPanel extends JPanel {
         JLabel usdLabel= new JLabel();
         usdLabel.setText("USD");
         usdLabel.setFont(new Font("ARIAL", Font.PLAIN, 9));
-        usdLabel.setBounds(usdWalletBalance.getX() + 30, 75, 150, 20);
+        usdLabel.setBounds(usdWalletBalance.getX() + 35, 75, 150, 20);
         usdLabel.setForeground(new Color(126, 133, 143));
 
         overviewLabel.setText("Overview");
