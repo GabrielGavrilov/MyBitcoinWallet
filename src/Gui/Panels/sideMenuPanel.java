@@ -10,7 +10,7 @@ public class sideMenuPanel extends JPanel {
     static userAPI user = new userAPI();
 
     /*
-        PUBLIC JLABELS
+        PUBLIC LABELS
     */
 
     public static JLabel btcWalletBalance = new JLabel();
@@ -64,13 +64,13 @@ public class sideMenuPanel extends JPanel {
         JLabel btcLabel = new JLabel();
         btcLabel.setText("BTC");
         btcLabel.setFont(new Font("ARIAL", Font.PLAIN, 9));
-        btcLabel.setBounds(btcWalletBalance.getX() + 92, 53, 150, 20);
+        btcLabel.setBounds(btcWalletBalance.getX() + 89, 53, 150, 20);
         btcLabel.setForeground(new Color(126, 133, 143));
 
         JLabel usdLabel= new JLabel();
         usdLabel.setText("USD");
         usdLabel.setFont(new Font("ARIAL", Font.PLAIN, 9));
-        usdLabel.setBounds(usdWalletBalance.getX() + 33, 75, 150, 20);
+        usdLabel.setBounds(usdWalletBalance.getX() + 30, 75, 150, 20);
         usdLabel.setForeground(new Color(126, 133, 143));
 
         overviewLabel.setText("Overview");
