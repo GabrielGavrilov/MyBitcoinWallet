@@ -97,19 +97,19 @@ public class sideMenuPanel extends JPanel {
             PANELS
         */
 
-        menuOrangeOverview.setBounds(0, 0, 5, 50);
+        menuOrangeOverview.setBounds(0, 0, 3, 50);
         menuOrangeOverview.setBackground(new Color(247, 147, 26));
         menuOrangeOverview.setVisible(true);
 
-        menuOrangeSend.setBounds(0, 0, 5, 50);
+        menuOrangeSend.setBounds(0, 0, 3, 50);
         menuOrangeSend.setBackground(new Color(247, 147, 26));
         menuOrangeSend.setVisible(false);
 
-        menuOrangeReceive.setBounds(0, 0, 5, 50);
+        menuOrangeReceive.setBounds(0, 0, 3, 50);
         menuOrangeReceive.setBackground(new Color(247, 147, 26));
         menuOrangeReceive.setVisible(false);
 
-        menuOrangeSettings.setBounds(0, 0, 5, 50);
+        menuOrangeSettings.setBounds(0, 0, 3, 50);
         menuOrangeSettings.setBackground(new Color(247, 147, 26));
         menuOrangeSettings.setVisible(false);
 

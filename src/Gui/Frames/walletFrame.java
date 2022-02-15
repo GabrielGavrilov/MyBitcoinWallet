@@ -35,7 +35,7 @@ public class walletFrame extends JFrame implements ActionListener, MouseListener
         this.setLayout(null);
         this.setSize(675, 500);
         this.getContentPane().setBackground(new Color(20, 24, 34));
-        this.setTitle("Wallet :: MyBitcoinWallet");
+        this.setTitle("Overview :: MyBitcoinWallet");
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setResizable(false);
 
@@ -71,6 +71,8 @@ public class walletFrame extends JFrame implements ActionListener, MouseListener
     }
 
     public void showOverviewPanel() {
+
+        this.setTitle("Overview :: MyBitcoinWallet");
 
         this.isOnOverviewMenu = true;
         this.isOnSendMenu = false;
@@ -230,24 +232,80 @@ public class walletFrame extends JFrame implements ActionListener, MouseListener
     @Override
     public void mouseEntered(MouseEvent e) {
 
-        if(e.getSource() == sideMenu.menuOverview) {
-            sideMenu.menuOverview.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
-            sideMenu.menuOverview.setBackground(new Color(19, 22, 31));
+        if(isOnOverviewMenu == true) {
+
+            if(e.getSource() == sideMenu.menuSend) {
+                sideMenu.menuSend.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+                sideMenu.sendLabel.setForeground(new Color(247, 147, 26));
+            }
+
+            if(e.getSource() == sideMenu.menuReceive) {
+                sideMenu.menuReceive.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+                sideMenu.receiveLabel.setForeground(new Color(247, 147, 26));
+            }
+
+            if(e.getSource() == sideMenu.menuSettings) {
+                sideMenu.menuSettings.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+                sideMenu.settingsLabel.setForeground(new Color(247, 147, 26));
+            }
+
         }
 
-        if(e.getSource() == sideMenu.menuSend) {
-            sideMenu.menuSend.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
-            sideMenu.menuSend.setBackground(new Color(19, 22, 31));
+        if(isOnSendMenu == true) {
+
+            if(e.getSource() == sideMenu.menuOverview) {
+                sideMenu.menuOverview.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+                sideMenu.overviewLabel.setForeground(new Color(247, 147, 26));
+            }
+
+            if(e.getSource() == sideMenu.menuReceive) {
+                sideMenu.menuReceive.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+                sideMenu.receiveLabel.setForeground(new Color(247, 147, 26));
+            }
+
+            if(e.getSource() == sideMenu.menuSettings) {
+                sideMenu.menuSettings.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+                sideMenu.settingsLabel.setForeground(new Color(247, 147, 26));
+            }
+
         }
 
-        if(e.getSource() == sideMenu.menuReceive) {
-            sideMenu.menuReceive.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
-            sideMenu.menuReceive.setBackground(new Color(19, 22, 31));
+        if(isOnReceiveMenu == true) {
+
+            if(e.getSource() == sideMenu.menuOverview) {
+                sideMenu.menuOverview.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+                sideMenu.overviewLabel.setForeground(new Color(247, 147, 26));
+            }
+
+            if(e.getSource() == sideMenu.menuSend) {
+                sideMenu.menuSend.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+                sideMenu.sendLabel.setForeground(new Color(247, 147, 26));
+            }
+
+            if(e.getSource() == sideMenu.menuSettings) {
+                sideMenu.menuSettings.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+                sideMenu.settingsLabel.setForeground(new Color(247, 147, 26));
+            }
+
         }
 
-        if(e.getSource() == sideMenu.menuSettings) {
-            sideMenu.menuSettings.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
-            sideMenu.menuSettings.setBackground(new Color(19, 22, 31));
+        if(isOnSettingsMenu) {
+
+            if(e.getSource() == sideMenu.menuOverview) {
+                sideMenu.menuOverview.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+                sideMenu.overviewLabel.setForeground(new Color(247, 147, 26));
+            }
+
+            if(e.getSource() == sideMenu.menuSend) {
+                sideMenu.menuSend.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+                sideMenu.sendLabel.setForeground(new Color(247, 147, 26));
+            }
+
+            if(e.getSource() == sideMenu.menuReceive) {
+                sideMenu.menuReceive.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+                sideMenu.receiveLabel.setForeground(new Color(247, 147, 26));
+            }
+
         }
 
     }
@@ -256,59 +314,67 @@ public class walletFrame extends JFrame implements ActionListener, MouseListener
     public void mouseExited(MouseEvent e) {
 
         if(isOnOverviewMenu == true) {
+
             if(e.getSource() == sideMenu.menuSend) {
-                sideMenu.menuSend.setBackground(new Color(9, 12, 20));
+                sideMenu.sendLabel.setForeground(new Color(126, 133, 143));
             }
 
             if(e.getSource() == sideMenu.menuReceive) {
-                sideMenu.menuReceive.setBackground(new Color(9, 12, 20));
+                sideMenu.receiveLabel.setForeground(new Color(126, 133, 143));
             }
 
             if(e.getSource() == sideMenu.menuSettings) {
-                sideMenu.menuSettings.setBackground(new Color(9, 12, 20));
+                sideMenu.settingsLabel.setForeground(new Color(126, 133, 143));
             }
+
         }
 
         if(isOnSendMenu == true) {
+
             if(e.getSource() == sideMenu.menuOverview) {
-                sideMenu.menuOverview.setBackground(new Color(9, 12, 20));
+                sideMenu.overviewLabel.setForeground(new Color(126, 133, 143));
             }
 
             if(e.getSource() == sideMenu.menuReceive) {
-                sideMenu.menuReceive.setBackground(new Color(9, 12, 20));
+                sideMenu.receiveLabel.setForeground(new Color(126, 133, 143));
             }
 
             if(e.getSource() == sideMenu.menuSettings) {
-                sideMenu.menuSettings.setBackground(new Color(9, 12, 20));
+                sideMenu.settingsLabel.setForeground(new Color(126, 133, 143));
             }
+
         }
 
         if(isOnReceiveMenu == true) {
+
             if(e.getSource() == sideMenu.menuOverview) {
-                sideMenu.menuOverview.setBackground(new Color(9, 12, 20));
+                sideMenu.overviewLabel.setForeground(new Color(126, 133, 143));
             }
 
             if(e.getSource() == sideMenu.menuSend) {
-                sideMenu.menuSend.setBackground(new Color(9, 12, 20));
+                sideMenu.sendLabel.setForeground(new Color(126, 133, 143));
             }
 
             if(e.getSource() == sideMenu.menuSettings) {
-                sideMenu.menuSettings.setBackground(new Color(9, 12, 20));
+                sideMenu.settingsLabel.setForeground(new Color(126, 133, 143));
             }
+
         }
 
-        if(isOnSettingsMenu == true) {
+        if(isOnSettingsMenu) {
+
             if(e.getSource() == sideMenu.menuOverview) {
-                sideMenu.menuOverview.setBackground(new Color(9, 12, 20));
+                sideMenu.overviewLabel.setForeground(new Color(126, 133, 143));
             }
 
             if(e.getSource() == sideMenu.menuSend) {
-                sideMenu.menuSend.setBackground(new Color(9, 12, 20));
+                sideMenu.sendLabel.setForeground(new Color(126, 133, 143));
             }
 
             if(e.getSource() == sideMenu.menuReceive) {
-                sideMenu.menuReceive.setBackground(new Color(9, 12, 20));
+                sideMenu.receiveLabel.setForeground(new Color(126, 133, 143));
             }
+
         }
 
     }
