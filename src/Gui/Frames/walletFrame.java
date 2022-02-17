@@ -1,6 +1,7 @@
 package Gui.Frames;
 
 import Gui.Panels.*;
+import Program.userAPI;
 
 import javax.swing.*;
 import java.awt.*;
@@ -10,6 +11,8 @@ import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 
 public class walletFrame extends JFrame implements ActionListener, MouseListener {
+
+    userAPI user = new userAPI();
 
     /*
         PANELS
@@ -30,7 +33,7 @@ public class walletFrame extends JFrame implements ActionListener, MouseListener
     boolean isOnReceiveMenu = false;
     boolean isOnSettingsMenu = false;
 
-    public walletFrame() {
+    public walletFrame() throws InterruptedException {
 
         this.setLayout(null);
         this.setSize(675, 500);
@@ -47,6 +50,8 @@ public class walletFrame extends JFrame implements ActionListener, MouseListener
         sideMenu.menuSend.addMouseListener(this);
         sideMenu.menuReceive.addMouseListener(this);
         sideMenu.menuSettings.addMouseListener(this);
+
+        sendPanel.sendMaxButton.addActionListener(this);
 
         /*
             ADDING
@@ -201,6 +206,12 @@ public class walletFrame extends JFrame implements ActionListener, MouseListener
 
     @Override
     public void actionPerformed(ActionEvent e) {
+
+        if(e.getSource() == sendPanel.sendMaxButton) {
+
+            sendPanel.amountToSend.setText(user.getUserBtcBalance());
+
+        }
 
     }
 

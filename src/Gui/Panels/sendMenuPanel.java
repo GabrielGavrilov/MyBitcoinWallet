@@ -3,6 +3,7 @@ package Gui.Panels;
 import javax.swing.*;
 import javax.swing.border.LineBorder;
 import java.awt.*;
+import java.util.concurrent.TimeUnit;
 
 public class sendMenuPanel extends JPanel {
 
@@ -20,7 +21,7 @@ public class sendMenuPanel extends JPanel {
     public JButton sendMaxButton = new JButton("SEND MAX");
     public JButton sendButton = new JButton("SEND");
 
-    public sendMenuPanel() {
+    public sendMenuPanel() throws InterruptedException {
 
         this.setBackground(new Color(20, 24, 34));
         this.setLayout(null);
@@ -96,7 +97,7 @@ public class sendMenuPanel extends JPanel {
         sendButton.setBackground(new Color(247, 147, 26));
         sendButton.setForeground(Color.white);
         sendButton.setFocusable(false);
-        sendButton.setBounds(375,12, 75, 35);
+        sendButton.setBounds(375,12, 75, 33);
         sendButton.setBorder(null);
 
         /*
