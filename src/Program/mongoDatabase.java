@@ -48,7 +48,7 @@ public class mongoDatabase {
                 users.insert(newUser);
 
             } else {
-                System.out.println("There has been an issue.");
+                System.out.println("There has been an issue inserting new user.");
             }
 
         } catch(Exception e) {
@@ -143,6 +143,26 @@ public class mongoDatabase {
         }
 
         return userFound;
+
+    }
+
+    public static void insertNewSendOrder(String senderWallet, String receiverWallet, String amountOfBtc) {
+
+        try {
+
+            DBCollection orders = _database.getCollection("orders");
+            DBObject newOrder = new BasicDBObject()
+                    .append("sender_wallet", senderWallet)
+                    .append("receiver_wallet", receiverWallet)
+                    .append("amount_of_bitcoin", amountOfBtc);
+
+            orders.insert(newOrder);
+
+        } catch(Exception e) {
+
+            System.out.println("There has been an issue creating a new send order.");
+
+        }
 
     }
 

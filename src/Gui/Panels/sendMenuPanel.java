@@ -10,14 +10,30 @@ public class sendMenuPanel extends JPanel {
         PUBLIC TEXT FIELDS
     */
 
-    JTextField bitcoinAddress = new JTextField();
-    JTextField amountToSend = new JTextField();
+    public JTextField bitcoinAddress = new JTextField();
+    public JTextField amountToSend = new JTextField();
+
+    /*
+        PUBLIC BUTTONS
+    */
+
+    public JButton sendMaxButton = new JButton("SEND MAX");
+    public JButton sendButton = new JButton("SEND");
 
     public sendMenuPanel() {
 
         this.setBackground(new Color(20, 24, 34));
         this.setLayout(null);
         this.setBounds(190,0,485,500);
+
+        /*
+            Panels
+        */
+
+        JPanel confirmSendPanel = new JPanel();
+        confirmSendPanel.setBackground(new Color(35, 39, 51));
+        confirmSendPanel.setBounds(0,415, 485, 75);
+        confirmSendPanel.setLayout(null);
 
         /*
             LABELS
@@ -58,6 +74,31 @@ public class sendMenuPanel extends JPanel {
         bitcoinAddress.setBorder(new LineBorder(new Color(43, 47, 58), 1));
         bitcoinAddress.setForeground(new Color(43, 47, 58));
 
+        amountToSend.setText(" Amount");
+        amountToSend.setBounds(25, 206, 300, 30);
+        amountToSend.setFont(new Font("ARIAL", Font.PLAIN, 17));
+        amountToSend.setBackground(new Color(9,12,20));
+        amountToSend.setBorder(new LineBorder(new Color(43, 47, 58), 1));
+        amountToSend.setForeground(new Color(43, 47, 58));
+
+        /*
+            BUTTONS
+        */
+
+        sendMaxButton.setFont(new Font("ARIAL", Font.BOLD, 14));
+        sendMaxButton.setBackground(new Color(247, 147, 26));
+        sendMaxButton.setForeground(Color.white);
+        sendMaxButton.setFocusable(false);
+        sendMaxButton.setBounds(335,206, 113, 30);
+        sendMaxButton.setBorder(null);
+
+        sendButton.setFont(new Font("ARIAL", Font.BOLD, 14));
+        sendButton.setBackground(new Color(247, 147, 26));
+        sendButton.setForeground(Color.white);
+        sendButton.setFocusable(false);
+        sendButton.setBounds(375,12, 75, 35);
+        sendButton.setBorder(null);
+
         /*
             ADD
         */
@@ -67,6 +108,11 @@ public class sendMenuPanel extends JPanel {
         this.add(bitcoinAddressLabel);
         this.add(bitcoinAddress);
         this.add(amountToSendLabel);
+        this.add(sendMaxButton);
+        this.add(amountToSend);
+
+        this.add(confirmSendPanel);
+        confirmSendPanel.add(sendButton);
 
     }
 
