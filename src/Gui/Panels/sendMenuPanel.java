@@ -21,6 +21,15 @@ public class sendMenuPanel extends JPanel {
     public JButton sendMaxButton = new JButton("SEND MAX");
     public JButton sendButton = new JButton("SEND");
 
+    /*
+        PUBLIC LABELS
+    */
+
+    public JLabel sendLabel = new JLabel();
+    public JLabel sendBitcoinOnlyLabel = new JLabel();
+    public JLabel bitcoinAddressLabel = new JLabel();
+    public JLabel amountToSendLabel = new JLabel();
+
     public sendMenuPanel() throws InterruptedException {
 
         this.setBackground(new Color(20, 24, 34));
@@ -40,25 +49,21 @@ public class sendMenuPanel extends JPanel {
             LABELS
         */
 
-        JLabel sendLabel = new JLabel();
         sendLabel.setText("Send");
         sendLabel.setFont(new Font("ARIAL", Font.PLAIN, 27));
         sendLabel.setForeground(Color.white);
         sendLabel.setBounds(25,25,400,30);
 
-        JLabel sendBitcoinOnlyLabel = new JLabel();
         sendBitcoinOnlyLabel.setText("Send only to Bitcoin (BTC) addresses.");
         sendBitcoinOnlyLabel.setFont(new Font("ARIAL", Font.BOLD, 13));
         sendBitcoinOnlyLabel.setForeground(Color.white);
         sendBitcoinOnlyLabel.setBounds(25,55,400,30);
 
-        JLabel bitcoinAddressLabel = new JLabel();
         bitcoinAddressLabel.setText("BITCOIN ADDRESS");
         bitcoinAddressLabel.setFont(new Font("ARIAL", Font.PLAIN, 12));
         bitcoinAddressLabel.setForeground(new Color(126, 133, 143));
         bitcoinAddressLabel.setBounds(25, 100, 400, 30);
 
-        JLabel amountToSendLabel = new JLabel();
         amountToSendLabel.setText("AMOUNT TO SEND");
         amountToSendLabel.setFont(new Font("ARIAL", Font.PLAIN, 12));
         amountToSendLabel.setForeground(new Color(126, 133, 143));
