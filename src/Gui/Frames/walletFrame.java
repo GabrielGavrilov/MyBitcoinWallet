@@ -27,6 +27,12 @@ public class walletFrame extends JFrame implements ActionListener, MouseListener
     JPanel errorPanel = new JPanel();
 
     /*
+        LABELS
+    */
+
+    JLabel errorMsg = new JLabel();
+
+    /*
         MENU CHECK
     */
 
@@ -64,14 +70,25 @@ public class walletFrame extends JFrame implements ActionListener, MouseListener
 
         errorPanel.setBounds(190,0,485,50);
         errorPanel.setBackground(new Color(255,99,71));
+        errorPanel.setLayout(new GridBagLayout());
+
+        /*
+            LABELS
+        */
+
+        errorMsg.setFont(new Font("ARIAL", Font.PLAIN, 17));
+        errorMsg.setForeground(Color.WHITE);
 
         /*
             ADDING
         */
 
         this.add(sideMenu);
+
         this.add(errorPanel);
         errorPanel.setVisible(false);
+        errorPanel.add(errorMsg);
+        errorMsg.setVisible(false);
 
         this.add(overviewPanel);
         overviewPanel.setVisible(true);
@@ -220,9 +237,28 @@ public class walletFrame extends JFrame implements ActionListener, MouseListener
 
     public void sendError(String errorMessage) {
 
-        sendPanel.
+        if(isOnSendMenu == true) {
 
-        errorPanel.setVisible(true);
+            sendPanel.sendLabel.setBounds(25,75,400,30);
+            sendPanel.sendBitcoinOnlyLabel.setBounds(25,105,400,30);
+            sendPanel.bitcoinAddressLabel.setBounds(25,150,400,30);
+            sendPanel.bitcoinAddress.setBounds(25,178,423,30);
+            sendPanel.amountToSendLabel.setBounds(25, 228, 400,30);
+            sendPanel.amountToSend.setBounds(25,256,300,30);
+            sendPanel.sendMaxButton.setBounds(335,256,113,30);
+
+            errorPanel.setVisible(true);
+            errorMsg.setText(errorMessage);
+            errorMsg.setVisible(true);
+
+        }
+
+    }
+
+    public void removeError() {
+
+        errorPanel.setVisible(false);
+        errorMsg.setVisible(false);
 
     }
 
@@ -230,14 +266,29 @@ public class walletFrame extends JFrame implements ActionListener, MouseListener
     public void actionPerformed(ActionEvent e) {
 
         if(e.getSource() == sendPanel.sendMaxButton) {
-
             sendPanel.amountToSend.setText(user.getUserBtcBalance());
-
         }
 
         if(e.getSource() == sendPanel.sendButton) {
 
-            sendError("test");
+            try {
+
+                Double amountOfBitcoin = Double.parseDouble(sendPanel.amountToSend.getText());
+                Double userBitcoinBalance = Double.parseDouble(user.getUserBtcBalance());
+
+                if(amountOfBitcoin > userBitcoinBalance) {
+                    sendError("You have insufficient funds!");
+                }
+
+                if(amountOfBitcoin <= 0.00012999) {
+                    sendError("You must send at least 0.00013 bitcoin!");
+                }
+
+            } catch(Exception err) {
+
+                sendError("There has been an issue!");
+
+            }
 
         }
 
@@ -247,18 +298,22 @@ public class walletFrame extends JFrame implements ActionListener, MouseListener
     public void mouseClicked(MouseEvent e) {
 
         if(e.getSource() == sideMenu.menuOverview) {
+            removeError();
             showOverviewPanel();
         }
 
         if(e.getSource() == sideMenu.menuSend) {
+            removeError();
             showSendPanel();
         }
 
         if(e.getSource() == sideMenu.menuReceive) {
+            removeError();
             showReceivePanel();
         }
 
         if(e.getSource() == sideMenu.menuSettings) {
+            removeError();
             showSettingsPanel();
         }
 
