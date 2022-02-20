@@ -51,12 +51,12 @@ public class sideMenuPanel extends JPanel {
         totalBalanceLabel.setForeground(new Color(126, 133, 143));
         totalBalanceLabel.setBounds(20,20,150,20);
 
-        btcWalletBalance.setText(user.getUserBtcBalance()); // CHANGE THIS LATER
+        btcWalletBalance.setText(user.getUserBtcBalance() + " BTC");
         btcWalletBalance.setFont(new Font("ARIAL", Font.BOLD, 16));
         btcWalletBalance.setForeground(Color.white);
         btcWalletBalance.setBounds(20,55,150,20);
 
-        usdWalletBalance.setText(user.getUserUsdBalance());
+        usdWalletBalance.setText(user.getUserUsdBalance() + " USD");
         usdWalletBalance.setFont(new Font("ARIAL", Font.BOLD, 11));
         usdWalletBalance.setForeground(new Color(126, 133, 143));
         usdWalletBalance.setBounds(20, 75, 150, 20);
@@ -144,8 +144,10 @@ public class sideMenuPanel extends JPanel {
         this.add(totalBalanceLabel);
         this.add(btcWalletBalance);
         this.add(btcLabel);
+        btcLabel.setVisible(false);
         this.add(usdWalletBalance);
         this.add(usdLabel);
+        usdLabel.setVisible(false);
 
         this.add(menuOverview);
         this.add(menuSend);

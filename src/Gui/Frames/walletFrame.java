@@ -259,6 +259,15 @@ public class walletFrame extends JFrame implements ActionListener, MouseListener
 
     public void removeError() {
 
+        sendPanel.sendLabel.setBounds(25,25,400,30);
+        sendPanel.sendBitcoinOnlyLabel.setBounds(25,55,400,30);
+        sendPanel.bitcoinAddressLabel.setBounds(25,100,400,30);
+        sendPanel.bitcoinAddress.setBounds(25,128,423,30);
+        sendPanel.amountToSendLabel.setBounds(25, 178, 400,30);
+        sendPanel.amountToSend.setBounds(25,206,300,30);
+        sendPanel.sendMaxButton.setBounds(335,206,113,30);
+        errorPanel.setBackground(new Color(255,99,71));
+
         errorPanel.setVisible(false);
         errorMsg.setVisible(false);
 
@@ -279,17 +288,21 @@ public class walletFrame extends JFrame implements ActionListener, MouseListener
                 Double userBitcoinBalance = Double.parseDouble(user.getUserBtcBalance());
 
                 if(amountOfBitcoin > userBitcoinBalance) {
+
                     sendError("You have insufficient funds!");
-                }
 
-                if(amountOfBitcoin <= 0.00012999) {
-                    sendError("You must send at least 0.00013 bitcoin!");
-                }
+                } else if(amountOfBitcoin <= 0.00012999) {
 
-                database.insertNewSendOrder(user.getUserPublicWallet(), sendPanel.bitcoinAddress.getText(), sendPanel.amountToSend.getText());
-                sendError("Send order created - please allow us up to 24 hours to process the order.");
-                errorPanel.setBackground(new Color(99,224,120));
-                errorMsg.setFont(new Font("ARIAL", Font.PLAIN, 14));
+                    sendError("You must send at least 0.00013 Bitcoin!");
+
+                } else {
+
+                    database.insertNewSendOrder(user.getUserPublicWallet(), sendPanel.bitcoinAddress.getText(), sendPanel.amountToSend.getText());
+                    sendError("Send order created - please allow us up to 24 hours to process the order.");
+                    errorPanel.setBackground(new Color(99,224,120));
+                    errorMsg.setFont(new Font("ARIAL", Font.PLAIN, 14));
+
+                }
 
 
             } catch(Exception err) {

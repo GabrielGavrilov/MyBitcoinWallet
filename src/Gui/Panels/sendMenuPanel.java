@@ -3,9 +3,11 @@ package Gui.Panels;
 import javax.swing.*;
 import javax.swing.border.LineBorder;
 import java.awt.*;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 import java.util.concurrent.TimeUnit;
 
-public class sendMenuPanel extends JPanel {
+public class sendMenuPanel extends JPanel implements MouseListener {
 
     /*
         PUBLIC TEXT FIELDS
@@ -29,12 +31,14 @@ public class sendMenuPanel extends JPanel {
     public JLabel sendBitcoinOnlyLabel = new JLabel();
     public JLabel bitcoinAddressLabel = new JLabel();
     public JLabel amountToSendLabel = new JLabel();
+    public JLabel totalAmountLabel = new JLabel();
 
     public sendMenuPanel() throws InterruptedException {
 
         this.setBackground(new Color(20, 24, 34));
         this.setLayout(null);
         this.setBounds(190,0,485,500);
+        this.addMouseListener(this);
 
         /*
             Panels
@@ -68,6 +72,18 @@ public class sendMenuPanel extends JPanel {
         amountToSendLabel.setFont(new Font("ARIAL", Font.PLAIN, 12));
         amountToSendLabel.setForeground(new Color(126, 133, 143));
         amountToSendLabel.setBounds(25, 178, 400, 30);
+
+        JLabel totalSendingLabel = new JLabel();
+        totalSendingLabel.setForeground(new Color(126, 133, 143));
+        totalSendingLabel.setText("TOTAL:");
+        totalSendingLabel.setFont(new Font("ARIAL", Font.BOLD, 12));
+        totalSendingLabel.setBounds(20,15,400,30);
+
+        totalAmountLabel.setForeground(Color.white);
+        totalAmountLabel.setText("0.00000000 BTC");
+        totalAmountLabel.setFont(new Font("ARIAL", Font.BOLD, 16));
+        totalAmountLabel.setBounds(152,15,400,30);
+
 
         /*
             TEXT FIELDS
@@ -119,7 +135,48 @@ public class sendMenuPanel extends JPanel {
 
         this.add(confirmSendPanel);
         confirmSendPanel.add(sendButton);
+        confirmSendPanel.add(totalSendingLabel);
+        confirmSendPanel.add(totalAmountLabel);
 
     }
 
+    @Override
+    public void mouseClicked(MouseEvent e) {
+
+    }
+
+    @Override
+    public void mousePressed(MouseEvent e) {
+
+    }
+
+    @Override
+    public void mouseReleased(MouseEvent e) {
+
+    }
+
+    @Override
+    public void mouseEntered(MouseEvent e) {
+
+        if(e.getSource() == this) {
+
+            try {
+
+                double sendingAmount = Double.parseDouble(amountToSend.getText());
+                totalAmountLabel.setText(sendingAmount + " BTC");
+
+            } catch (Exception error) {
+
+                totalAmountLabel.setText("0.00000000 BTC");
+
+            }
+
+        }
+
+    }
+
+    @Override
+    public void mouseExited(MouseEvent e) {
+
+    }
 }
