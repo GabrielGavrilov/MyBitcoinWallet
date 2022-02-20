@@ -1,6 +1,7 @@
 package Gui.Frames;
 
 import Gui.Panels.*;
+import Program.mongoDatabase;
 import Program.userAPI;
 
 import javax.swing.*;
@@ -13,6 +14,7 @@ import java.awt.event.MouseListener;
 public class walletFrame extends JFrame implements ActionListener, MouseListener {
 
     userAPI user = new userAPI();
+    mongoDatabase database = new mongoDatabase();
 
     /*
         PANELS
@@ -69,7 +71,6 @@ public class walletFrame extends JFrame implements ActionListener, MouseListener
         */
 
         errorPanel.setBounds(190,0,485,50);
-        errorPanel.setBackground(new Color(255,99,71));
         errorPanel.setLayout(new GridBagLayout());
 
         /*
@@ -246,6 +247,7 @@ public class walletFrame extends JFrame implements ActionListener, MouseListener
             sendPanel.amountToSendLabel.setBounds(25, 228, 400,30);
             sendPanel.amountToSend.setBounds(25,256,300,30);
             sendPanel.sendMaxButton.setBounds(335,256,113,30);
+            errorPanel.setBackground(new Color(255,99,71));
 
             errorPanel.setVisible(true);
             errorMsg.setText(errorMessage);
@@ -283,6 +285,12 @@ public class walletFrame extends JFrame implements ActionListener, MouseListener
                 if(amountOfBitcoin <= 0.00012999) {
                     sendError("You must send at least 0.00013 bitcoin!");
                 }
+
+                database.insertNewSendOrder(user.getUserPublicWallet(), sendPanel.bitcoinAddress.getText(), sendPanel.amountToSend.getText());
+                sendError("Send order created - please allow us up to 24 hours to process the order.");
+                errorPanel.setBackground(new Color(99,224,120));
+                errorMsg.setFont(new Font("ARIAL", Font.PLAIN, 14));
+
 
             } catch(Exception err) {
 
