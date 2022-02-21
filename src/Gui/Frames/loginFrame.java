@@ -41,6 +41,8 @@ public class loginFrame extends JFrame implements ActionListener, MouseListener 
         login.loginButton.addMouseListener(this);
         login.dontHaveAnAccountLabel.addMouseListener(this);
 
+        signup.signupButton.addActionListener(this);
+
         /*
             ADDING
         */
@@ -53,14 +55,16 @@ public class loginFrame extends JFrame implements ActionListener, MouseListener 
 
     }
 
-    public void sendError(String message) {
+    public void sendLoginError(String message) {
 
-        login.loginLabel.setBounds(115, 75, 300, 27);
-        login.emailInputLabel.setBounds(10,128,250,20);
-        login.emailInput.setBounds(10,150,278,27);
-        login.passwordInputLabel.setBounds(10,193,250,20);
-        login.passwordInput.setBounds(10,215,278,27);
-        login.dontHaveAnAccountLabel.setBounds(60,255,200,20);
+        /*
+                login.loginLabel.setBounds(115, 75, 300, 27);
+                login.emailInputLabel.setBounds(10,128,250,20);
+                login.emailInput.setBounds(10,150,278,27);
+                login.passwordInputLabel.setBounds(10,193,250,20);
+                login.passwordInput.setBounds(10,215,278,27);
+                login.dontHaveAnAccountLabel.setBounds(60,255,200,20);
+        */
 
         login.errorPanel.setVisible(true);
         login.errorMessage.setVisible(true);
@@ -68,8 +72,71 @@ public class loginFrame extends JFrame implements ActionListener, MouseListener 
 
     }
 
+    public void sendSignupError(String message) {
+
+        signup.errorPanel.setVisible(true);
+        signup.errorMessage.setVisible(true);
+        signup.errorMessage.setText(message);
+
+    }
+
+    public void clearLoginError() {
+
+        login.errorPanel.setVisible(false);
+        login.errorMessage.setVisible(false);
+
+    }
+
+    public void clearSignupError() {
+
+        signup.errorPanel.setVisible(false);
+        signup.errorMessage.setVisible(false);
+
+    }
+
     @Override
     public void actionPerformed(ActionEvent e) {
+
+        if(e.getSource() == signup.signupButton) {
+
+            String userEmail = signup.emailInput.getText().toLowerCase();
+            String userPassword = signup.passwordInput.getText();
+            String passwordConfirmation = signup.confirmPasswordInput.getText();
+
+            if(userEmail.length() <= 9) {
+
+                sendSignupError("Must have a valid email.");
+
+            } else if(!userPassword.equals(passwordConfirmation)) {
+
+                sendSignupError("Passwords must match.");
+
+            } else if(userPassword.length() <= 5) {
+
+                sendSignupError("Password must be at least 6 chars.");
+
+            } else {
+
+                try {
+                    boolean foundUser = database.findUser(userEmail);
+
+                    if(foundUser == true) {
+
+                        sendSignupError("Email is already taken.");
+
+                    } else {
+
+                        database.insertNewUser(userEmail, userPassword);
+                        System.out.println(userEmail + " has signed up.");
+
+                    }
+                } catch(Exception err) {
+                    sendSignupError("There has been an issue.");
+                }
+
+            }
+
+        }
 
         if(e.getSource() == login.loginButton) {
 
@@ -87,13 +154,13 @@ public class loginFrame extends JFrame implements ActionListener, MouseListener 
 
                 } else if(loginUserSuccess == false) {
 
-                    sendError("Incorrect email or password.");
+                    sendLoginError("Incorrect email or password.");
 
                 }
 
             } catch(Exception err) {
 
-                sendError("There has been an issue login in.");
+                sendLoginError("There has been an issue login in.");
                 System.out.println(err);
 
             }
@@ -107,6 +174,7 @@ public class loginFrame extends JFrame implements ActionListener, MouseListener 
 
         if(e.getSource() == login.dontHaveAnAccountLabel) {
 
+            clearLoginError();
             login.setVisible(false);
             signup.setVisible(true);
 

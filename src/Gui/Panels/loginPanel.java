@@ -76,7 +76,7 @@ public class loginPanel extends JPanel {
         dontHaveAnAccountLabel.setText("Don't have an account?");
         dontHaveAnAccountLabel.setFont(new Font("ARIAL", Font.PLAIN, 18));
         dontHaveAnAccountLabel.setForeground(new Color(126,133,143));
-        dontHaveAnAccountLabel.setBounds(60, 205, 200, 20);
+        dontHaveAnAccountLabel.setBounds(60, 215, 200, 20);
 
         /*
             TEXT FIELDS
