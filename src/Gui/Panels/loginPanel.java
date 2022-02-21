@@ -9,6 +9,19 @@ import java.awt.*;
 public class loginPanel extends JPanel {
 
     /*
+        PUBLIC PANELS
+    */
+
+    public JPanel errorPanel = new JPanel();
+
+    /*
+        PUBLIC LABELS
+    */
+
+    public JLabel errorMessage = new JLabel();
+    public JLabel dontHaveAnAccountLabel = new JLabel();
+
+    /*
        PUBLIC TEXT FIELDS
     */
 
@@ -28,8 +41,19 @@ public class loginPanel extends JPanel {
         this.setBounds(180, 35, 300, 400);
 
         /*
+            PANELS
+        */
+
+        errorPanel.setBounds(0,0,300,50);
+        errorPanel.setBackground(new Color(255,99,71));
+        errorPanel.setLayout(new GridBagLayout());
+
+        /*
             LABELS
         */
+
+        errorMessage.setFont(new Font("ARIAL", Font.PLAIN, 17));
+        errorMessage.setForeground(Color.white);
 
         JLabel loginLabel = new JLabel();
         loginLabel.setText("Log In");
@@ -48,6 +72,11 @@ public class loginPanel extends JPanel {
         passwordInputLabel.setFont(new Font("ARIAL", Font.PLAIN, 16));
         passwordInputLabel.setForeground(new Color(126,133,143));
         passwordInputLabel.setBounds(10, 143, 250, 20);
+
+        dontHaveAnAccountLabel.setText("Don't have an account?");
+        dontHaveAnAccountLabel.setFont(new Font("ARIAL", Font.PLAIN, 17));
+        dontHaveAnAccountLabel.setForeground(new Color(126,133,143));
+        dontHaveAnAccountLabel.setBounds(20, 200, 250, 20);
 
         /*
             TEXT FIELDS
@@ -80,12 +109,18 @@ public class loginPanel extends JPanel {
             ADDING
         */
 
+        this.add(errorPanel);
+        errorPanel.add(errorMessage);
+        errorPanel.setVisible(false);
+        errorMessage.setVisible(false);
+
         this.add(loginLabel);
         this.add(emailInputLabel);
         this.add(emailInput);
         this.add(passwordInputLabel);
         this.add(passwordInput);
         this.add(loginButton);
+        this.add(dontHaveAnAccountLabel);
 
     }
 

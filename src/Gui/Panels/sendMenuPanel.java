@@ -75,14 +75,14 @@ public class sendMenuPanel extends JPanel implements MouseListener {
 
         JLabel totalSendingLabel = new JLabel();
         totalSendingLabel.setForeground(new Color(126, 133, 143));
-        totalSendingLabel.setText("TOTAL:");
+        totalSendingLabel.setText("SENDING TOTAL:");
         totalSendingLabel.setFont(new Font("ARIAL", Font.BOLD, 12));
         totalSendingLabel.setBounds(20,15,400,30);
 
         totalAmountLabel.setForeground(Color.white);
         totalAmountLabel.setText("0.00000000 BTC");
         totalAmountLabel.setFont(new Font("ARIAL", Font.BOLD, 16));
-        totalAmountLabel.setBounds(152,15,400,30);
+        totalAmountLabel.setBounds(170,15,400,30);
 
 
         /*

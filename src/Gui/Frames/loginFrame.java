@@ -48,12 +48,20 @@ public class loginFrame extends JFrame implements ActionListener, MouseListener 
 
     }
 
+    public void sendError(String message) {
+
+        login.errorPanel.setVisible(true);
+        login.errorMessage.setVisible(true);
+        login.errorMessage.setText(message);
+
+    }
+
     @Override
     public void actionPerformed(ActionEvent e) {
 
         if(e.getSource() == login.loginButton) {
 
-            String userEmail = login.emailInput.getText();
+            String userEmail = login.emailInput.getText().toLowerCase();
             String userPassword = login.passwordInput.getText();
 
             try {
@@ -67,7 +75,7 @@ public class loginFrame extends JFrame implements ActionListener, MouseListener 
 
                 } else if(loginUserSuccess == false) {
 
-                    System.out.println("There has been an issue.");
+                    sendError("Incorrect email or password.");
 
                 }
 
