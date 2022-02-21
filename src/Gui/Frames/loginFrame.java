@@ -1,6 +1,7 @@
 package Gui.Frames;
 
 import Gui.Panels.loginPanel;
+import Gui.Panels.signupPanel;
 import Program.mongoDatabase;
 import Program.userAPI;
 
@@ -21,6 +22,7 @@ public class loginFrame extends JFrame implements ActionListener, MouseListener 
     */
 
     loginPanel login = new loginPanel();
+    signupPanel signup = new signupPanel();
 
     public loginFrame() {
 
@@ -44,6 +46,8 @@ public class loginFrame extends JFrame implements ActionListener, MouseListener 
         */
 
         this.add(login);
+        this.add(signup);
+        signup.setVisible(false);
 
         this.setVisible(true);
 
@@ -100,6 +104,13 @@ public class loginFrame extends JFrame implements ActionListener, MouseListener 
 
     @Override
     public void mouseClicked(MouseEvent e) {
+
+        if(e.getSource() == login.dontHaveAnAccountLabel) {
+
+            login.setVisible(false);
+            signup.setVisible(true);
+
+        }
 
     }
 
