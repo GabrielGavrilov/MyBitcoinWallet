@@ -41,7 +41,7 @@ public class sendMenuPanel extends JPanel implements MouseListener {
         this.addMouseListener(this);
 
         /*
-            Panels
+            PANELS
         */
 
         JPanel confirmSendPanel = new JPanel();

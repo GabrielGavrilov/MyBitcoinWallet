@@ -80,10 +80,10 @@ public class signupPanel extends JPanel {
         confirmPasswordInputLabel.setForeground(new Color(126,133,143));
         confirmPasswordInputLabel.setBounds(10, 208, 250, 20);
 
-        haveAnAccountLabel.setText("have an account?");
+        haveAnAccountLabel.setText("Have an account?");
         haveAnAccountLabel.setFont(new Font("ARIAL", Font.PLAIN, 18));
         haveAnAccountLabel.setForeground(new Color(126,133,143));
-        haveAnAccountLabel.setBounds(82, 275, 200, 20);
+        haveAnAccountLabel.setBounds(82, 275, 175, 20);
 
         /*
             TEXT FIELDS
