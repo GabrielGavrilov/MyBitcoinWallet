@@ -42,6 +42,8 @@ public class loginFrame extends JFrame implements ActionListener, MouseListener 
         login.dontHaveAnAccountLabel.addMouseListener(this);
 
         signup.signupButton.addActionListener(this);
+        signup.signupButton.addMouseListener(this);
+        signup.haveAnAccountLabel.addMouseListener(this);
 
         /*
             ADDING
@@ -97,47 +99,6 @@ public class loginFrame extends JFrame implements ActionListener, MouseListener 
     @Override
     public void actionPerformed(ActionEvent e) {
 
-        if(e.getSource() == signup.signupButton) {
-
-            String userEmail = signup.emailInput.getText().toLowerCase();
-            String userPassword = signup.passwordInput.getText();
-            String passwordConfirmation = signup.confirmPasswordInput.getText();
-
-            if(userEmail.length() <= 9) {
-
-                sendSignupError("Must have a valid email.");
-
-            } else if(!userPassword.equals(passwordConfirmation)) {
-
-                sendSignupError("Passwords must match.");
-
-            } else if(userPassword.length() <= 5) {
-
-                sendSignupError("Password must be at least 6 chars.");
-
-            } else {
-
-                try {
-                    boolean foundUser = database.findUser(userEmail);
-
-                    if(foundUser == true) {
-
-                        sendSignupError("Email is already taken.");
-
-                    } else {
-
-                        database.insertNewUser(userEmail, userPassword);
-                        System.out.println(userEmail + " has signed up.");
-
-                    }
-                } catch(Exception err) {
-                    sendSignupError("There has been an issue.");
-                }
-
-            }
-
-        }
-
         if(e.getSource() == login.loginButton) {
 
             String userEmail = login.emailInput.getText().toLowerCase();
@@ -154,14 +115,57 @@ public class loginFrame extends JFrame implements ActionListener, MouseListener 
 
                 } else if(loginUserSuccess == false) {
 
-                    sendLoginError("Incorrect email or password.");
+                    sendLoginError("Incorrect email or password!");
 
                 }
 
             } catch(Exception err) {
 
-                sendLoginError("There has been an issue login in.");
+                sendLoginError("There has been an issue!");
                 System.out.println(err);
+
+            }
+
+        }
+
+        if(e.getSource() == signup.signupButton) {
+
+            String userEmail = signup.emailInput.getText().toLowerCase();
+            String userPassword = signup.passwordInput.getText();
+            String passwordConfirmation = signup.confirmPasswordInput.getText();
+
+            if(userEmail.length() <= 9) {
+
+                sendSignupError("Must have a valid email!");
+
+            } else if(!userPassword.equals(passwordConfirmation)) {
+
+                sendSignupError("Passwords must match!");
+
+            } else if(userPassword.length() <= 5) {
+
+                sendSignupError("Password must be at least 6 chars!");
+
+            } else {
+
+                try {
+                    boolean foundUser = database.findUser(userEmail);
+
+                    if(foundUser == true) {
+
+                        sendSignupError("Email is already taken!");
+
+                    } else {
+
+                        database.insertNewUser(userEmail, userPassword);
+                        clearSignupError();
+                        signup.setVisible(false);
+                        login.setVisible(true);
+
+                        sendSignupError("There has been an issue!");
+                    }
+                } catch(Exception err) {
+                }
 
             }
 
@@ -177,6 +181,16 @@ public class loginFrame extends JFrame implements ActionListener, MouseListener 
             clearLoginError();
             login.setVisible(false);
             signup.setVisible(true);
+            this.setTitle("Sign Up :: MyBitcoinWallet");
+
+        }
+
+        if(e.getSource() == signup.haveAnAccountLabel) {
+
+            clearSignupError();
+            signup.setVisible(false);
+            login.setVisible(true);
+            this.setTitle("Log In :: MyBitcoinWallet");
 
         }
 
@@ -209,6 +223,20 @@ public class loginFrame extends JFrame implements ActionListener, MouseListener 
 
         }
 
+        if(e.getSource() == signup.haveAnAccountLabel) {
+
+            signup.haveAnAccountLabel.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+            signup.haveAnAccountLabel.setForeground(Color.white);
+
+        }
+
+        if(e.getSource() == signup.signupButton) {
+
+            signup.signupButton.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+            signup.signupButton.setBackground(new Color(209,118,8));
+
+        }
+
     }
 
     @Override
@@ -220,6 +248,14 @@ public class loginFrame extends JFrame implements ActionListener, MouseListener 
 
         if(e.getSource() == login.loginButton) {
             login.loginButton.setBackground(new Color(247, 147, 26));
+        }
+
+        if(e.getSource() == signup.haveAnAccountLabel) {
+            signup.haveAnAccountLabel.setForeground(new Color(126, 133, 143));
+        }
+
+        if(e.getSource() == signup.signupButton) {
+            signup.signupButton.setBackground(new Color(247,147,26));
         }
 
     }
