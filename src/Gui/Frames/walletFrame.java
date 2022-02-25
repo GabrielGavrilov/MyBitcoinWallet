@@ -382,13 +382,14 @@ public class walletFrame extends JFrame implements ActionListener, MouseListener
         }
 
         if(e.getSource() == settingsPanel.updateBalanceButton) {
-            sendPanel.sendButton.setBackground(new Color(209, 118, 8));
-            sendPanel.sendButton.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+            settingsPanel.updateBalanceButton.setBackground(new Color(209, 118, 8));
+            settingsPanel.updateBalanceButton.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
         }
 
         if(e.getSource() == settingsPanel.deleteAccountButton) {
-            sendPanel.sendButton.setBackground(new Color(209, 118, 8));
-            sendPanel.sendButton.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+            settingsPanel.deleteAccountButton.setBackground(new Color(255,99,71));
+            settingsPanel.deleteAccountButton.setForeground(Color.white);
+            settingsPanel.deleteAccountButton.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
         }
 
         if(isOnOverviewMenu == true) {
@@ -478,6 +479,15 @@ public class walletFrame extends JFrame implements ActionListener, MouseListener
 
         if(e.getSource() == sendPanel.sendButton) {
             sendPanel.sendButton.setBackground(new Color(247, 147, 26));
+        }
+
+        if(e.getSource() == settingsPanel.updateBalanceButton) {
+            settingsPanel.updateBalanceButton.setBackground(new Color(247,147,26));
+        }
+
+        if(e.getSource() == settingsPanel.deleteAccountButton) {
+            settingsPanel.deleteAccountButton.setForeground(new Color(255,99,71));
+            settingsPanel.deleteAccountButton.setBackground(new Color(35, 39, 51));
         }
 
         if(isOnOverviewMenu == true) {

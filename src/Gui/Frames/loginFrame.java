@@ -155,16 +155,19 @@ public class loginFrame extends JFrame implements ActionListener, MouseListener 
 
                         sendSignupError("Email is already taken!");
 
-                    } else {
+                    } else if(foundUser == false) {
 
                         database.insertNewUser(userEmail, userPassword);
-                        clearSignupError();
                         signup.setVisible(false);
+                        clearSignupError();
                         login.setVisible(true);
 
-                        sendSignupError("There has been an issue!");
                     }
+
                 } catch(Exception err) {
+
+                    sendSignupError("There has been an issue!");
+
                 }
 
             }
