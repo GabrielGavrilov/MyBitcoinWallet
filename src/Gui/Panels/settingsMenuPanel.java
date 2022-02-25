@@ -16,7 +16,7 @@ public class settingsMenuPanel extends JPanel {
     */
 
     public JButton updateBalanceButton = new JButton("Update Balance");
-    public JButton deleteButton = new JButton("Delete Account");
+    public JButton deleteAccountButton = new JButton("Delete Account");
 
     public settingsMenuPanel() {
 
@@ -72,6 +72,13 @@ public class settingsMenuPanel extends JPanel {
         updateBalanceButton.setFocusable(false);
         updateBalanceButton.setBorder(null);
 
+        deleteAccountButton.setBounds(307, 12, 140, 32);
+        deleteAccountButton.setFont(new Font("ARIAL", Font.BOLD, 14));
+        deleteAccountButton.setBackground(new Color(35, 39, 51));
+        deleteAccountButton.setForeground(new Color(255,99,71));
+        deleteAccountButton.setFocusable(false);
+        deleteAccountButton.setBorder(new LineBorder(new Color(255,99,71), 1));
+
         /*
             ADDING
         */
@@ -81,6 +88,7 @@ public class settingsMenuPanel extends JPanel {
         this.add(privateKey);
         this.add(settingsBottomPanel);
         settingsBottomPanel.add(updateBalanceButton);
+        settingsBottomPanel.add(deleteAccountButton);
 
     }
 

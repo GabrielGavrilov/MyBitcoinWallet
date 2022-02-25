@@ -111,7 +111,7 @@ public class loginFrame extends JFrame implements ActionListener, MouseListener 
                 if(loginUserSuccess == true) {
 
                     walletFrame wallet = new walletFrame();
-                    this.setVisible(false);
+                    this.dispose();
 
                 } else if(loginUserSuccess == false) {
 

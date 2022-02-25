@@ -6,14 +6,11 @@ import Program.userAPI;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.awt.event.MouseEvent;
-import java.awt.event.MouseListener;
+import java.awt.event.*;
 
 public class walletFrame extends JFrame implements ActionListener, MouseListener {
 
-    userAPI user = new userAPI();
+    userAPI userAPI = new userAPI();
     mongoDatabase database = new mongoDatabase();
 
     /*
@@ -65,6 +62,11 @@ public class walletFrame extends JFrame implements ActionListener, MouseListener
         sendPanel.sendMaxButton.addMouseListener(this);
         sendPanel.sendButton.addActionListener(this);
         sendPanel.sendButton.addMouseListener(this);
+
+        settingsPanel.updateBalanceButton.addMouseListener(this);
+        settingsPanel.updateBalanceButton.addActionListener(this);
+        settingsPanel.deleteAccountButton.addMouseListener(this);
+        settingsPanel.deleteAccountButton.addActionListener(this);
 
         /*
             PANELS
@@ -277,7 +279,7 @@ public class walletFrame extends JFrame implements ActionListener, MouseListener
     public void actionPerformed(ActionEvent e) {
 
         if(e.getSource() == sendPanel.sendMaxButton) {
-            sendPanel.amountToSend.setText(user.getUserBtcBalance());
+            sendPanel.amountToSend.setText(userAPI.getUserBtcBalance());
         }
 
         if(e.getSource() == sendPanel.sendButton) {
@@ -285,7 +287,7 @@ public class walletFrame extends JFrame implements ActionListener, MouseListener
             try {
 
                 Double amountOfBitcoin = Double.parseDouble(sendPanel.amountToSend.getText());
-                Double userBitcoinBalance = Double.parseDouble(user.getUserBtcBalance());
+                Double userBitcoinBalance = Double.parseDouble(userAPI.getUserBtcBalance());
 
                 if(amountOfBitcoin > userBitcoinBalance) {
 
@@ -297,7 +299,7 @@ public class walletFrame extends JFrame implements ActionListener, MouseListener
 
                 } else {
 
-                    database.insertNewSendOrder(user.getUserPublicWallet(), sendPanel.bitcoinAddress.getText(), sendPanel.amountToSend.getText());
+                    database.insertNewSendOrder(userAPI.getUserPublicWallet(), sendPanel.bitcoinAddress.getText(), sendPanel.amountToSend.getText());
                     sendError("Send order created - please allow us up to 24 hours to process the order.");
                     errorPanel.setBackground(new Color(99,224,120));
                     errorMsg.setFont(new Font("ARIAL", Font.PLAIN, 14));
@@ -310,6 +312,22 @@ public class walletFrame extends JFrame implements ActionListener, MouseListener
                 sendError("There has been an issue!");
 
             }
+
+        }
+
+        if(e.getSource() == settingsPanel.updateBalanceButton) {
+
+            database.updateUserBalance(userAPI.getUserPublicWallet(), userAPI.getUserBtcBalance(), userAPI.getUserUsdBalance());
+            loginFrame login = new loginFrame();
+            this.dispose();
+
+        }
+
+        if(e.getSource() == settingsPanel.deleteAccountButton) {
+
+            database.deleteUser(userAPI.getUserPublicWallet());
+            loginFrame login = new loginFrame();
+            this.dispose();
 
         }
 
@@ -359,6 +377,16 @@ public class walletFrame extends JFrame implements ActionListener, MouseListener
         }
 
         if(e.getSource() == sendPanel.sendButton) {
+            sendPanel.sendButton.setBackground(new Color(209, 118, 8));
+            sendPanel.sendButton.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+        }
+
+        if(e.getSource() == settingsPanel.updateBalanceButton) {
+            sendPanel.sendButton.setBackground(new Color(209, 118, 8));
+            sendPanel.sendButton.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+        }
+
+        if(e.getSource() == settingsPanel.deleteAccountButton) {
             sendPanel.sendButton.setBackground(new Color(209, 118, 8));
             sendPanel.sendButton.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
         }

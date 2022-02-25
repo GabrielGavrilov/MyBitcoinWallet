@@ -2,6 +2,8 @@ package Program;
 
 import com.mongodb.*;
 import com.mongodb.client.MongoCollection;
+import com.mongodb.client.model.Filters;
+import com.mongodb.client.result.DeleteResult;
 import org.bson.Document;
 
 import javax.print.Doc;
@@ -238,6 +240,16 @@ public class mongoDatabase {
 
 
         }
+
+    }
+
+    public static void deleteUser(String publicWallet) {
+
+        MongoCollection<Document> users = (MongoCollection<Document>) _database.getCollection("users");
+
+        users.deleteOne(new Document("public_btc_wallet", publicWallet));
+
+        System.out.println("Deleted");
 
     }
 
