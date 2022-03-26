@@ -7,7 +7,7 @@ public class main {
     public static void main(String[] args) throws InterruptedException {
 
         boolean developerMode;
-        developerMode = false;
+        developerMode = true;
 
         System.out.println("Starting app.");
 
