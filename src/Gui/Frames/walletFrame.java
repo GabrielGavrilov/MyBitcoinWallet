@@ -347,13 +347,14 @@ public class walletFrame extends JFrame implements ActionListener, MouseListener
 
         }
 
+        /*
         if(e.getSource() == settingsPanel.deleteAccountButton) {
 
             database.deleteUser(userAPI.getUserPublicWallet());
             loginFrame login = new loginFrame();
             this.dispose();
 
-        }
+        } */
 
     }
 
