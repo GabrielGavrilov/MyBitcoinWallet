@@ -19,7 +19,7 @@ public class mongoDatabase {
         PRIVATE VARIABLES
     */
 
-    private static MongoClientURI _connectionURI = new MongoClientURI("mongodb+srv://gabby:winter22@personaldatabase.wqq3m.mongodb.net/MyBitcoinWallet?retryWrites=true&w=majority");
+    private static MongoClientURI _connectionURI = new MongoClientURI("ENTER YOUR MONGODB URI HERE");
     private static MongoClient _mongoClient = new MongoClient(_connectionURI);
     private static DB _database = _mongoClient.getDB("MyBitcoinWallet");;
 
