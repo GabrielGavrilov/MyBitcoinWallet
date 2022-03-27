@@ -59,6 +59,8 @@ public class mongoDatabase {
 
     }
 
+    // @METHOD: User log in.
+    // @DESCRIPTION: If user is found in the database, set the private user variables inside the UserAPI.
     public static boolean loginUser(String email, String password) {
 
         boolean loginUser = false;
@@ -154,6 +156,8 @@ public class mongoDatabase {
 
     }
 
+    // @METHOD: Insert new send order.
+    // @DESCRIPTION: Grabs the sender wallet, receiver wallet, and the amount of bitcoin's the user would like to send, then inserts them into the database.
     public static void insertNewSendOrder(String senderWallet, String receiverWallet, String amountOfBtc) {
 
         try {
@@ -174,6 +178,8 @@ public class mongoDatabase {
 
     }
 
+    // @METHOD: Update user balance.
+    // @DESCRIPTION: Scrapes the user's bitcoin & usd balance via online, and updates their balance to the database.
     public static void updateUserBalance(String publicWallet, String currentBtcBalance, String currentUsdBalance) {
 
         try {
@@ -237,13 +243,13 @@ public class mongoDatabase {
 
         } catch(Exception e) {
 
-
+            System.out.println("There has been an issue.");
 
         }
 
     }
 
-    public static void deleteUser(String publicWallet) {
+    /* public static void deleteUser(String publicWallet) {
 
         MongoCollection<Document> users = (MongoCollection<Document>) _database.getCollection("users");
 
@@ -251,6 +257,6 @@ public class mongoDatabase {
 
         System.out.println("Deleted");
 
-    }
+    } */
 
 }

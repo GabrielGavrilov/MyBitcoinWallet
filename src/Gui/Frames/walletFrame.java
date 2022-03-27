@@ -7,6 +7,7 @@ import Program.userAPI;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
+import java.net.URI;
 
 public class walletFrame extends JFrame implements ActionListener, MouseListener {
 
@@ -291,6 +292,14 @@ public class walletFrame extends JFrame implements ActionListener, MouseListener
 
         if(e.getSource() == overviewPanel.receiveButton) {
             showReceivePanel();
+        }
+
+        if(e.getSource() == overviewPanel.buyButton) {
+            try {
+                Desktop.getDesktop().browse(URI.create("https://bitcoin.org/en/buy"));
+            } catch(Exception err) {
+                System.out.println("There has been an issue.");
+            }
         }
 
         if(e.getSource() == sendPanel.sendMaxButton) {

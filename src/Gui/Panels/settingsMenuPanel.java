@@ -60,6 +60,7 @@ public class settingsMenuPanel extends JPanel {
         privateKey.setBackground(new Color(9,12,20));
         privateKey.setBorder(new LineBorder(new Color(43, 47, 58), 1));
         privateKey.setForeground(Color.white);
+        privateKey.setEditable(false);
 
         /*
             BUTTONS
