@@ -6,3 +6,17 @@ MyBitcoinWallet is a simple & beginner friendly bitcoin wallet with no strings a
 <p align="center">
   <img src="https://user-images.githubusercontent.com/79603829/160292623-c2cfb770-4b44-4809-b63f-bff7d0a62f36.PNG"/>
 </p>
+
+## Getting Started
+
+1) Since MyBitcoinWallet is written entirely in Java, make sure you have any Java JDK installed (preferably Java 8)
+2) Clone or download MyBitcoinWallet's GitHub repository onto your system.
+3) Open the source code with your IDE of choice and make sure you set MyBitcoinWallet with your Java JDK.
+4) Since the database is operating on MongoDB, make sure you put your own MongoDB Connection String (URI) in ``mongoDatabase.java``
+5) Run the program, and sign up. (Signing up takes a bit of time, so don't be alarmed.)
+
+## Languages
+
+- MyBitcoinWallet's database is running on MongoDB (Using the Java MongoDB Client).
+- MyBitcoinWallet's back-end is written entirely in Java (Java 8).
+- MyBitcoinWallet's client is written entirely in JFrame.
