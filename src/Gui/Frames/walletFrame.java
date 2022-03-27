@@ -53,6 +53,13 @@ public class walletFrame extends JFrame implements ActionListener, MouseListener
             ADDING LISTENERS
         */
 
+        overviewPanel.sendButton.addMouseListener(this);
+        overviewPanel.receiveButton.addMouseListener(this);
+        overviewPanel.buyButton.addMouseListener(this);
+        overviewPanel.sendButton.addActionListener(this);
+        overviewPanel.receiveButton.addActionListener(this);
+        overviewPanel.buyButton.addActionListener(this);
+
         sideMenu.menuOverview.addMouseListener(this);
         sideMenu.menuSend.addMouseListener(this);
         sideMenu.menuReceive.addMouseListener(this);
@@ -278,6 +285,14 @@ public class walletFrame extends JFrame implements ActionListener, MouseListener
     @Override
     public void actionPerformed(ActionEvent e) {
 
+        if(e.getSource() == overviewPanel.sendButton) {
+            showSendPanel();
+        }
+
+        if(e.getSource() == overviewPanel.receiveButton) {
+            showReceivePanel();
+        }
+
         if(e.getSource() == sendPanel.sendMaxButton) {
             sendPanel.amountToSend.setText(userAPI.getUserBtcBalance());
         }
@@ -370,6 +385,21 @@ public class walletFrame extends JFrame implements ActionListener, MouseListener
 
     @Override
     public void mouseEntered(MouseEvent e) {
+
+        if(e.getSource() == overviewPanel.sendButton) {
+            overviewPanel.sendButton.setBackground(new Color(209, 118, 8));
+            overviewPanel.sendButton.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+        }
+
+        if(e.getSource() == overviewPanel.receiveButton) {
+            overviewPanel.receiveButton.setBackground(new Color(209, 118, 8));
+            overviewPanel.receiveButton.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+        }
+
+        if(e.getSource() == overviewPanel.buyButton) {
+            overviewPanel.buyButton.setBackground(new Color(209, 118, 8));
+            overviewPanel.buyButton.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+        }
 
         if(e.getSource() == sendPanel.sendMaxButton) {
             sendPanel.sendMaxButton.setBackground(new Color(209, 118, 8));
@@ -472,6 +502,18 @@ public class walletFrame extends JFrame implements ActionListener, MouseListener
 
     @Override
     public void mouseExited(MouseEvent e) {
+
+        if(e.getSource() == overviewPanel.sendButton) {
+            overviewPanel.sendButton.setBackground(new Color(247, 147, 26));
+        }
+
+        if(e.getSource() == overviewPanel.receiveButton) {
+            overviewPanel.receiveButton.setBackground(new Color(247, 147, 26));
+        }
+
+        if(e.getSource() == overviewPanel.buyButton) {
+            overviewPanel.buyButton.setBackground(new Color(247, 147, 26));
+        }
 
         if(e.getSource() == sendPanel.sendMaxButton) {
             sendPanel.sendMaxButton.setBackground(new Color(247, 147, 26));

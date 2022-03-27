@@ -13,8 +13,9 @@ public class overviewMenuPanel extends JPanel {
         PUBLIC BUTTONS
     */
 
-    JButton sendButton = new JButton("Send Bitcoin");
-    JButton receiveButton = new JButton("Receive Bitcoin");
+    public JButton sendButton = new JButton("Send Bitcoin");
+    public JButton receiveButton = new JButton("Receive Bitcoin");
+    public JButton buyButton = new JButton("Buy Bitcoin");
 
     public overviewMenuPanel() {
 
@@ -40,14 +41,21 @@ public class overviewMenuPanel extends JPanel {
         sendButton.setForeground(Color.white);
         sendButton.setFocusable(false);
         sendButton.setBorder(null);
-        sendButton.setBounds(100, 200, 135, 33);
+        sendButton.setBounds(100, 255, 135, 33);
 
         receiveButton.setFont(new Font("ARIAL", Font.BOLD, 14));
         receiveButton.setBackground(new Color(247, 147, 26));
         receiveButton.setForeground(Color.white);
         receiveButton.setFocusable(false);
         receiveButton.setBorder(null);
-        receiveButton.setBounds(245, 200, 135, 33);
+        receiveButton.setBounds(245, 255, 135, 33);
+
+        buyButton.setFont(new Font("ARIAL", Font.BOLD, 14));
+        buyButton.setBackground(new Color(247, 147, 26));
+        buyButton.setForeground(Color.white);
+        buyButton.setFocusable(false);
+        buyButton.setBorder(null);
+        buyButton.setBounds(330, 12, 135, 33);
 
         /*
             LABELS
@@ -69,7 +77,7 @@ public class overviewMenuPanel extends JPanel {
         userWalletBalance.setText(userAPI.getUserBtcBalance() + " BTC");
         userWalletBalance.setFont(new Font("ARIAL", Font.PLAIN, 35));
         userWalletBalance.setForeground(Color.white);
-        userWalletBalance.setBounds(110, 150, 400, 30);
+        userWalletBalance.setBounds(110, 195, 400, 30);
 
         /*
             ADDING
@@ -81,6 +89,7 @@ public class overviewMenuPanel extends JPanel {
         this.add(sendButton);
         this.add(receiveButton);
         this.add(bottomPanel);
+        bottomPanel.add(buyButton);
 
     }
 
